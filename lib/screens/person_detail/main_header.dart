@@ -14,7 +14,7 @@ class MainHeader extends StatelessWidget {
         color: Colors.grey,
       ),
       child: Image.network("https://source.unsplash.com/uo7kcpljIxg",
-      fit: BoxFit.cover,
+        fit: BoxFit.cover,
       )
     );
   }

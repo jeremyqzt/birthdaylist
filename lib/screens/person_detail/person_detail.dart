@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import './main_header.dart';
 import './date_detail.dart';
+import '../date_picker.dart';
 
 class PersonDetail extends StatelessWidget {
   @override
@@ -17,6 +18,7 @@ class PersonDetail extends StatelessWidget {
           MainHeader(),
           DateDetail(),
           DateDetail(),
+          DatePickerButton(),
        ],
       )
     );
