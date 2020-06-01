@@ -35,7 +35,7 @@ class DateDetail extends StatelessWidget {
                   title: Padding(
                     padding: EdgeInsets.fromLTRB(0, 1.0, 0, 10.0),
                     child:Text(
-                    '26th Birthday',
+                    'Turning 26',
                     style: Theme.of(context).textTheme.headline6,
                     textAlign: TextAlign.center,
                     ),
