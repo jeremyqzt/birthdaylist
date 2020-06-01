@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import './main_header.dart';
 import './date_detail.dart';
 import '../date_picker.dart';
+import '../../screens/settings/settings.dart';
 
 class PersonDetail extends StatelessWidget {
   @override
@@ -13,7 +14,7 @@ class PersonDetail extends StatelessWidget {
           title: const Text('Jeremy Q.'),
           actions: <Widget>[
             PopupMenuButton<String>(
-                onSelected: choiceAction,
+                onSelected: (val) => choiceAction(val, context),
                 itemBuilder: (BuildContext context) {
                   return Constant.choices.map((String choice) {
                     return PopupMenuItem<String>(
@@ -47,5 +48,15 @@ class PersonDetail extends StatelessWidget {
         ));
   }
 
-  void choiceAction(String choice) {}
+  void choiceAction(String choice, BuildContext context) {
+    switch (choice) {
+      case Constant.Settings:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Settings()));
+        break;
+      case Constant.People:
+        print("people!");
+        break;
+    }
+  }
 }
