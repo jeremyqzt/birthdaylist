@@ -5,12 +5,15 @@ import './main_header.dart';
 import './date_detail.dart';
 import '../date_picker.dart';
 import '../../screens/settings/settings.dart';
+import 'package:flutter/services.dart';
 
 class PersonDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    makeNotificationTransparent();
     return Scaffold(
-        appBar: AppBar(
+        /*appBar: AppBar(
+
           title: const Text('Jeremy Q.'),
           actions: <Widget>[
             PopupMenuButton<String>(
@@ -35,7 +38,7 @@ class PersonDetail extends StatelessWidget {
                   }).toList();
                 })
           ],
-        ),
+        ),*/
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -48,11 +51,16 @@ class PersonDetail extends StatelessWidget {
         ));
   }
 
+  void makeNotificationTransparent(){
+    // Following Makes it disappear -> SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom])
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+    ));
+  }
   void choiceAction(String choice, BuildContext context) {
     switch (choice) {
       case Constant.Settings:
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Settings()));
+        //Navigator.push(context, MaterialPageRoute(builder: (context) => Settings()));
         break;
       case Constant.People:
         print("people!");
