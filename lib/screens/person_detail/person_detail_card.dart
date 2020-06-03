@@ -13,8 +13,8 @@ class _PersonDetailCard extends State<PersonDetailCard>
   final ValueNotifier<double> headerNegativeOffset = ValueNotifier<double>(0);
   final ValueNotifier<bool> appbarShadow = ValueNotifier<bool>(false);
 
-  final double maxHeaderHeight = 250.0;
-  final double minHeaderHeight = 56.0;
+  final double maxHeaderHeight = 200.0;
+  final double minHeaderHeight = 55.0;
   final double bodyContentRatioMin = .8;
   final double bodyContentRatioMax = 1.0;
 
@@ -97,7 +97,7 @@ class _PersonDetailCard extends State<PersonDetailCard>
                           Container(
                             alignment: AlignmentDirectional.center,
                             padding: EdgeInsets.only(
-                                left: 16.0, right: 16.0, top: 16.0),
+                                left: 10.0, right: 10.0, top: 10.0),
                             child: Material(
                               type: MaterialType.canvas,
                               color: Colors.white,
@@ -132,8 +132,6 @@ class _PersonDetailCard extends State<PersonDetailCard>
             child: ValueListenableBuilder<bool>(
                 valueListenable: appbarShadow,
                 builder: (context, value, child) {
-                  ///default height of appbar is 56.0. You can also
-                  ///use a custom widget with custom height if you want.
                   return AppBar(
                     backgroundColor: Colors.blue,
                     title: Text("Jeremy Q."),
