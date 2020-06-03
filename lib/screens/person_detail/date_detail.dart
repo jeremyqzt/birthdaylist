@@ -11,7 +11,8 @@ class _DateDetail extends State<DateDetail> {
   int age = 26;
   @override
   Widget build(BuildContext context) {
-    return ListTile(
+    return ExpansionTile(
+        title: ListTile(
       onTap: () {
         setState(() {
           this.age += 1;
@@ -40,6 +41,7 @@ class _DateDetail extends State<DateDetail> {
           textAlign: TextAlign.center,
         ),
       ),
+      )
     );
   }
 }
