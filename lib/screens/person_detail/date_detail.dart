@@ -6,11 +6,37 @@ class DateDetail extends StatelessWidget {
   //DateDetail();
   @override
   Widget build(BuildContext context) {
+    return ListTile(
+      leading:
+      ColorGradient(
+          child: Icon(
+            Icons.cake,
+            size: 50,
+            color: Colors.white,
+          )
+      ),
+      title: Padding(
+        padding: EdgeInsets.fromLTRB(0, 1.0, 0, 10.0),
+        child:Text(
+          'Turning 26',
+          style: Theme.of(context).textTheme.headline6,
+          textAlign: TextAlign.center,
+        ),
+      ),
+      subtitle: Padding(
+        padding: EdgeInsets.fromLTRB(0, 1.0, 0, 10.0),
+        child: Text(
+          '104 Days Until Birthday',
+          style: Theme.of(context).textTheme.bodyText2,
+          textAlign: TextAlign.center,
+        ),
+      ),
+    );
+    /*
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
-
         Container(
           width: 200,
           child: Card(
@@ -55,6 +81,6 @@ class DateDetail extends StatelessWidget {
         ),
         ),
       ]
-    );
+    );*/
   }
 }

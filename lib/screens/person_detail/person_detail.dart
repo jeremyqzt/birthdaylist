@@ -12,8 +12,7 @@ class PersonDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     makeNotificationTransparent();
     return Scaffold(
-        /*appBar: AppBar(
-
+        appBar: AppBar(
           title: const Text('Jeremy Q.'),
           actions: <Widget>[
             PopupMenuButton<String>(
@@ -22,7 +21,6 @@ class PersonDetail extends StatelessWidget {
                   return Constant.choices.map((String choice) {
                     return PopupMenuItem<String>(
                       value: choice,
-                      //child: Text(choice)
                       child: Row(
                         children: <Widget>[
                           Icon(Constant.choices_icons[choice],
@@ -38,7 +36,7 @@ class PersonDetail extends StatelessWidget {
                   }).toList();
                 })
           ],
-        ),*/
+        ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,

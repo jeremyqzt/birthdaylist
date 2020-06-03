@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/person_detail/person_detail.dart';
+import 'screens/person_detail/person_detail_card.dart';
+
 import 'screens/date_detail/date_detail.dart';
 import 'style.dart';
 
@@ -9,7 +11,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: PersonDetail(),
+      home: PersonDetailCard(),
       theme: ThemeData(
         appBarTheme: AppBarTheme(
           textTheme: TextTheme(headline6: AppBarTextStyle)
