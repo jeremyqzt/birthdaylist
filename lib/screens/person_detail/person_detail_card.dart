@@ -13,10 +13,11 @@ class _PersonDetailCard extends State<PersonDetailCard>
   final ValueNotifier<double> headerNegativeOffset = ValueNotifier<double>(0);
   final ValueNotifier<bool> appbarShadow = ValueNotifier<bool>(false);
 
-  final double maxHeaderHeight = 200.0;
+  final double maxHeaderHeight = 256.0;
   final double minHeaderHeight = 55.0;
   final double bodyContentRatioMin = .8;
   final double bodyContentRatioMax = 1.0;
+  final Color themeColor = Colors.blueGrey;
 
   ///must be between min and max values of body content ratio.
   final double bodyContentRatioParallax = .9;
@@ -35,7 +36,7 @@ class _PersonDetailCard extends State<PersonDetailCard>
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(0.0),
         child: AppBar(
-          backgroundColor: Colors.blue,
+          backgroundColor: themeColor,
           elevation: 0.0,
         ),
       ),
@@ -51,7 +52,7 @@ class _PersonDetailCard extends State<PersonDetailCard>
                         child: SizedBox(
                           height: maxHeaderHeight,
                           child: Container(
-                            color: Colors.blue,
+                            color: themeColor,
                           ),
                         ),
                       );
@@ -133,7 +134,7 @@ class _PersonDetailCard extends State<PersonDetailCard>
                 valueListenable: appbarShadow,
                 builder: (context, value, child) {
                   return AppBar(
-                    backgroundColor: Colors.blue,
+                    backgroundColor: themeColor,
                     title: Text("Jeremy Q."),
                     elevation: value ? 2.0 : 0.0,
                   );
