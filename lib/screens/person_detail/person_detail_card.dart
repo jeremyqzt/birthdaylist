@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import './date_detail.dart';
+import 'package:line_awesome_icons/line_awesome_icons.dart';
+
 
 //Code Stolen From https://stackoverflow.com/questions/60338584/flutter-how-allow-content-to-overlap-sliverappbar
 
@@ -112,7 +114,7 @@ class _PersonDetailCard extends State<PersonDetailCard>
                                   controller: scrollController,
                                   itemCount: 3,
                                   itemBuilder: (BuildContext context, int index) {
-                                    return DateDetail(Icons.all_inclusive);
+                                    return DateDetail(LineAwesomeIcons.heart);
                                   },
                                 ),
                               ),
