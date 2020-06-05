@@ -110,9 +110,9 @@ class _PersonDetailCard extends State<PersonDetailCard>
                               child: Container(
                                 child: ListView.builder(
                                   controller: scrollController,
-                                  itemCount: 15,
+                                  itemCount: 3,
                                   itemBuilder: (BuildContext context, int index) {
-                                    return DateDetail();
+                                    return DateDetail(Icons.all_inclusive);
                                   },
                                 ),
                               ),

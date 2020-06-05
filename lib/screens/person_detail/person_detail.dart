@@ -42,8 +42,8 @@ class PersonDetail extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             MainHeader(),
-            DateDetail(),
-            DateDetail(),
+            DateDetail(Icons.cake),
+            DateDetail(Icons.phonelink_ring),
             DatePickerButton(),
           ],
         ));

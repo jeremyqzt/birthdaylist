@@ -4,11 +4,16 @@ import '../color_gradient.dart';
 import '../toggle_switch.dart';
 
 class DateDetail extends StatefulWidget {
+  final IconData icon;
+  DateDetail(this.icon);
   @override
-  State<StatefulWidget> createState() => _DateDetail();
+  State<StatefulWidget> createState() => _DateDetail(icon);
 }
 
 class _DateDetail extends State<DateDetail> {
+  final IconData _icon;
+  _DateDetail(this._icon);
+
   int age = 26;
   @override
   Widget build(BuildContext context) {
@@ -21,7 +26,7 @@ class _DateDetail extends State<DateDetail> {
           },
           leading: ColorGradient(
               child: Icon(
-                Icons.cake,
+                this._icon,
                 size: 50,
                 color: Colors.white,
               )
@@ -44,7 +49,9 @@ class _DateDetail extends State<DateDetail> {
           ),
       ),
         children: [
-          ToggleSwitch(),
+          ToggleSwitch("Remind Me On The Day", Icons.add_alarm),
+          ToggleSwitch("Remind Me A Few Days In Advance", Icons.alarm_on),
+          ToggleSwitch("Automatically Send Birthday Wishes", Icons.adb),
         ]
     );
   }
