@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../color_gradient.dart';
 import '../toggle_switch.dart';
+import '../date_picker.dart';
 
 class DateDetail extends StatefulWidget {
   final IconData icon;
@@ -49,6 +50,7 @@ class _DateDetail extends State<DateDetail> {
           ),
       ),
         children: [
+          DatePickerButton(),
           ToggleSwitch("Remind Me On The Day", Icons.add_alarm),
           ToggleSwitch("Remind Me A Few Days In Advance", Icons.alarm_on),
           ToggleSwitch("Automatically Send Birthday Wishes", Icons.adb),
