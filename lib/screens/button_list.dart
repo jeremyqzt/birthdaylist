@@ -1,41 +1,43 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ToggleSwitch extends StatefulWidget {
-  final String toggleDescription;
-  final IconData toggleIcon;
-
-  ToggleSwitch(
-      this.toggleDescription, this.toggleIcon
-      );
-
-  @override
-  _ToggleSwitch createState() => _ToggleSwitch(this.toggleDescription, this.toggleIcon);
-}
-
-class _ToggleSwitch extends State<ToggleSwitch> {
-  bool isSwitched = false;
-  final String _descr;
-  final IconData _icon;
-
-  _ToggleSwitch(this._descr, this._icon);  //constructor
-
+class buttonList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return
-      SwitchListTile(
-        title: new Text(this._descr),
-        secondary: new Icon(
-            this._icon
-        ),
-        value: isSwitched,
-        onChanged: (value){
-          setState(() {
-            isSwitched=value;
-          });
-        },
-        activeTrackColor: Colors.lightBlueAccent,
-        activeColor: Colors.blue,
+      ButtonBar(
+        mainAxisSize: MainAxisSize.max,
+        children: <Widget>[
+          new RaisedButton(
+            shape: RoundedRectangleBorder(
+              borderRadius: new BorderRadius.circular(18.0),
+              side: BorderSide(color: Colors.black),
+            ),
+            color: Colors.redAccent,
+            child: new Text(
+              'Delete This Event',
+              style: TextStyle(
+                color: Colors.white
+              ),
+            ),
+            onPressed: () => print("Deleting"),
+
+          ),
+          new RaisedButton(
+            shape: RoundedRectangleBorder(
+              borderRadius: new BorderRadius.circular(18.0),
+              side: BorderSide(color: Colors.black),
+            ),
+            color: Colors.green,
+            child: new Text(
+              'Save Changes',
+              style: TextStyle(
+                  color: Colors.white
+              ),
+            ),
+            onPressed: () => print("Saving"),
+          ),
+        ],
       );
   }
 }
