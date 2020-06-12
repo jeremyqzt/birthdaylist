@@ -42,7 +42,15 @@ class _PersonDetailCard extends State<PersonDetailCard>
           elevation: 0.0,
         ),
       ),
-      body: Stack(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Add your onPressed code here!
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.green,
+      ),
+      body:
+      Stack(
         children: <Widget>[
           Stack(children: [
             Container(
