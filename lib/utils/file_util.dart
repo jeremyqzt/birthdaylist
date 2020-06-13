@@ -7,7 +7,7 @@ import 'package:path_provider/path_provider.dart';
 // https://flutter.dev/docs/cookbook/persistence/reading-writing-files
 /*
     Usage:
-    FileUtil.writeBirthday('{"jeremy":"1994-10-26"}');
+    FileUtil.writeBirthday('{"jeremy":"1990-01-01"}');
     FileUtil.readBirthday();
  */
 class FileUtil {
@@ -22,7 +22,7 @@ class FileUtil {
     return File('$path/birthdays.json');
   }
 
-  static Future<Map<String, dynamic>> readBirthday() async {
+  static Future<Map<String, dynamic>> readFile() async {
     try {
       final file = await _localFile;
 
@@ -36,7 +36,7 @@ class FileUtil {
     }
   }
 
-  static Future<File> writeBirthday(String json) async {
+  static Future<File> writeFile(String json) async {
     final file = await _localFile;
 
     // Write the file
