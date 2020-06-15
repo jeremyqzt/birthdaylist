@@ -1,0 +1,20 @@
+{
+  "savedEntries":[
+    {
+      "firstName": "Ben",
+      "lastName": "isNoob",
+      "id": 1,
+      "savedDays":
+      [
+        {
+          "type": 1,
+          "date": "1990-01-01",
+          "reminderDay": true,
+          "reminderprior": true,
+          "automessage": true,
+          "messageContent": "Lorem Ipsum"
+        }
+      ]
+    }
+  ]
+}

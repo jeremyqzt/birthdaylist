@@ -22,24 +22,21 @@ class FileUtil {
     return File('$path/birthdays.json');
   }
 
-  static Future<Map<String, dynamic>> readFile() async {
+  static Future readFile() async {
+    String text;
     try {
-      final file = await _localFile;
-
-      // Read the file
-      String contents = await file.readAsString();
-
-      return jsonDecode(contents);
+      final Directory directory = await getApplicationDocumentsDirectory();
+      final File file = File('${directory.path}/birthdays.json');
+      text = await file.readAsString();
     } catch (e) {
-      // If encountering an error, return empty json array
-      return {};
+      print("Couldn't read file");
     }
+    return text;
   }
 
   static Future<File> writeFile(String json) async {
-    final file = await _localFile;
-
-    // Write the file
-    return file.writeAsString('$json');
+    final Directory directory = await getApplicationDocumentsDirectory();
+    final File file = File('${directory.path}/birthdays.json');
+    await file.writeAsString(json);
   }
 }

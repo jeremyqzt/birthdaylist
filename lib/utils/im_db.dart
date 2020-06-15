@@ -4,7 +4,7 @@ import 'dart:convert';
 class imDb{
   String fp;
   FileUtil disk;
-  Map<String, dynamic> inMemoryDb;
+  String inMemoryDb;
 
   imDb({this.fp}){
     this._readDisk();
