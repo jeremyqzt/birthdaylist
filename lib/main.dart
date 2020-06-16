@@ -3,7 +3,6 @@ import 'screens/person_detail/person_detail.dart';
 import 'screens/person_detail/person_detail_card.dart';
 import "utils/im_db.dart";
 import "utils/file_util.dart";
-import 'data/json_struct.dart';
 import 'screens/date_detail/date_detail.dart';
 import 'style.dart';
 
@@ -20,7 +19,7 @@ class App extends StatelessWidget {
 
   readContents() async{
     String assetFile = await FileUtil.getAssetFile("assets/config/testData.json");
-    print(assetFile);
+    imDb.convertToJson(assetFile);
     //FileUtil.writeFile('{"Jeremy": True}');
     //String t;
     //t = await FileUtil.readFile();
