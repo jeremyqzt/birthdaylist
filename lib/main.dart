@@ -3,20 +3,30 @@ import 'screens/person_detail/person_detail.dart';
 import 'screens/person_detail/person_detail_card.dart';
 import "utils/im_db.dart";
 import "utils/file_util.dart";
-
+import 'data/json_struct.dart';
 import 'screens/date_detail/date_detail.dart';
 import 'style.dart';
 
 void main() async{
   runApp(App());
-  //imDb test = new imDb();
-  FileUtil.writeFile('{"Jeremy": True}');
-  String t;
-  t = await FileUtil.readFile();
-  print(t);
 }
 
 class App extends StatelessWidget {
+
+  App(){
+    WidgetsFlutterBinding.ensureInitialized();
+    this.readContents();
+  }
+
+  readContents() async{
+    String assetFile = await FileUtil.getAssetFile("assets/config/testData.json");
+    print(assetFile);
+    //FileUtil.writeFile('{"Jeremy": True}');
+    //String t;
+    //t = await FileUtil.readFile();
+    //print(t);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
