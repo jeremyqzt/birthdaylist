@@ -19,7 +19,8 @@ class App extends StatelessWidget {
 
   readContents() async{
     String assetFile = await FileUtil.getAssetFile("assets/config/testData.json");
-    imDb.convertToJson(assetFile);
+    imDb inMemDb = new imDb();
+    inMemDb.convertToJson(assetFile);
     //FileUtil.writeFile('{"Jeremy": True}');
     //String t;
     //t = await FileUtil.readFile();

@@ -1,6 +1,5 @@
 import "file_util.dart";
 import 'dart:convert';
-import '../data/json_struct.dart';
 
 class imDb{
   String fp;
@@ -11,9 +10,9 @@ class imDb{
     this._readDisk();
   }
 
-  static convertToJson(String inJson){
+  convertToJson(String inJson){
     final res = json.decode(inJson);
-    print(res);
+    print(res["savedEntries"][0]["savedDays"]);
   }
    _readDisk() async{
     this.inMemoryDb = await FileUtil.readFile();
