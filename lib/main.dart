@@ -11,20 +11,11 @@ void main() async{
 }
 
 class App extends StatelessWidget {
+  imDb inMemDb;
 
   App(){
     WidgetsFlutterBinding.ensureInitialized();
-    this.readContents();
-  }
-
-  readContents() async{
-    String assetFile = await FileUtil.getAssetFile("assets/config/testData.json");
-    imDb inMemDb = new imDb();
-    inMemDb.convertToJson(assetFile);
-    //FileUtil.writeFile('{"Jeremy": True}');
-    //String t;
-    //t = await FileUtil.readFile();
-    //print(t);
+    this.inMemDb = new imDb();
   }
 
   @override
