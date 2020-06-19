@@ -3,12 +3,15 @@ import 'dart:convert';
 
 class imDb{
   String fp;
+  dynamic jsonDb;
   FileUtil disk;
   String inMemoryDb;
 
   imDb(){
     this._readDisk();
   }
+
+  operator [](String keyStr) => this.jsonDb[keyStr];
 
   _readDisk() async{
     String assetFile = await FileUtil.getAssetFile("assets/config/testData.json");
@@ -20,8 +23,11 @@ class imDb{
   }
 
   __convertToJson(String inJson){
-    final res = json.decode(inJson);
-    print(res["savedEntries"][0]["savedDays"]);
+    this.jsonDb = json.decode(inJson);
+  }
+
+  getAllSavedEntries(){
+    return this.jsonDb["savedEntries"];
   }
 
   flushToDisk(){
