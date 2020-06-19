@@ -16,6 +16,12 @@ class App extends StatelessWidget {
   App(){
     WidgetsFlutterBinding.ensureInitialized();
     this.inMemDb = new imDb();
+    this.initializeData();
+  }
+
+  initializeData() async{
+    await this.inMemDb.readDisk();
+    //print(this.inMemDb["savedEntries"]);
   }
 
   @override

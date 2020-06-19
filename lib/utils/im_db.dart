@@ -8,12 +8,11 @@ class imDb{
   String inMemoryDb;
 
   imDb(){
-    this._readDisk();
+    //this._readDisk();
   }
 
   operator [](String keyStr) => this.jsonDb[keyStr];
-
-  _readDisk() async{
+  readDisk() async{
     String assetFile = await FileUtil.getAssetFile("assets/config/testData.json");
     this.__convertToJson(assetFile);
     //FileUtil.writeFile('{"Jeremy": True}');
