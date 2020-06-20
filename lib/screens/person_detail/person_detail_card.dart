@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
 import './date_detail.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
+import '../../utils/im_db.dart';
 
 
 //Code Stolen From https://stackoverflow.com/questions/60338584/flutter-how-allow-content-to-overlap-sliverappbar
 
 class PersonDetailCard extends StatefulWidget {
+  imDb _jsonDb;
+
+  PersonDetailCard(this._jsonDb);
   @override
-  State<StatefulWidget> createState() => _PersonDetailCard();
+  State<StatefulWidget> createState() => _PersonDetailCard(this._jsonDb);
 }
 
 class _PersonDetailCard extends State<PersonDetailCard>
     with SingleTickerProviderStateMixin {
+
+  imDb _jsonDb;
+  _PersonDetailCard(this._jsonDb);
   final ValueNotifier<double> headerNegativeOffset = ValueNotifier<double>(0);
   final ValueNotifier<bool> appbarShadow = ValueNotifier<bool>(false);
 
@@ -33,6 +40,7 @@ class _PersonDetailCard extends State<PersonDetailCard>
 
   @override
   Widget build(BuildContext context) {
+    print(this._jsonDb["savedEntries"]);
     return Scaffold(
       //just for status bar color
       appBar: PreferredSize(

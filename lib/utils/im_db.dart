@@ -4,33 +4,38 @@ import 'dart:convert';
 class imDb{
   String fp;
   dynamic jsonDb;
-  FileUtil disk;
-  String inMemoryDb;
-
+  bool _doneRead;
   imDb(){
-    //this._readDisk();
+    this._doneRead = false;
   }
 
-  operator [](String keyStr) => this.jsonDb[keyStr];
+  operator [](String keyStr) {
+    if (this._doneRead){
+      return  this.jsonDb[keyStr];
+    }
+  }
+
   readDisk() async{
-    String assetFile = await FileUtil.getAssetFile("assets/config/testData.json");
-    this.__convertToJson(assetFile);
-    //FileUtil.writeFile('{"Jeremy": True}');
-    //String t;
-    //t = await FileUtil.readFile();
-    //print(t);
+    String assetFile;
+    await FileUtil.getAssetFile("assets/config/testData.json").then(
+            (asset) {
+              assetFile = asset;
+              this.__convertToJson(assetFile);
+              this._doneRead = true;
+            }
+    );
   }
 
   __convertToJson(String inJson){
     this.jsonDb = json.decode(inJson);
   }
 
-  getAllSavedEntries(){
-    return this.jsonDb["savedEntries"];
-  }
+  //getAllSavedEntries(){
+   // return this.jsonDb["savedEntries"];
+  //}
 
   flushToDisk(){
-    FileUtil.writeFile(json.encode(this.inMemoryDb));
+    FileUtil.writeFile(json.decode(this.jsonDb));
   }
 
 
