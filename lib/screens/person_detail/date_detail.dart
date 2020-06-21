@@ -20,6 +20,9 @@ class _DateDetail extends State<DateDetail> {
   int age = 26;
   @override
   Widget build(BuildContext context) {
+    int dateType = this._info["type"];
+    String dateString = this._info["date"];
+    List<String> msg = supportedDateUtil.buildMsgFromDate(dateString, dateType);
     return ExpansionTile(
         title: ListTile(
           onTap: () {
@@ -29,7 +32,7 @@ class _DateDetail extends State<DateDetail> {
           },
           leading: ColorGradient(
               child: Icon(
-                supportedDateUtil.getIconFromDay(this._info["type"]),
+                supportedDateUtil.getIconFromDay(dateType),
                 size: 50,
                 color: Colors.white,
               )
@@ -37,7 +40,7 @@ class _DateDetail extends State<DateDetail> {
           title: Padding(
             padding: EdgeInsets.fromLTRB(0, 1.0, 0, 10.0),
             child:Text(
-              'Turning $age',
+              msg[0],
               style: Theme.of(context).textTheme.headline6,
               textAlign: TextAlign.center,
             ),
@@ -45,7 +48,7 @@ class _DateDetail extends State<DateDetail> {
           subtitle: Padding(
             padding: EdgeInsets.fromLTRB(0, 1.0, 0, 10.0),
             child: Text(
-              '104 Days Until Birthday',
+              msg[1],
               style: Theme.of(context).textTheme.bodyText2,
               textAlign: TextAlign.center,
             ),
