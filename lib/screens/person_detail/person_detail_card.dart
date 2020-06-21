@@ -40,7 +40,7 @@ class _PersonDetailCard extends State<PersonDetailCard>
 
   @override
   Widget build(BuildContext context) {
-    print(this._jsonDb["savedEntries"]);
+    List toRender = this._jsonDb["savedEntries"][0]["savedDays"];
     return Scaffold(
       //just for status bar color
       appBar: PreferredSize(
@@ -128,9 +128,9 @@ class _PersonDetailCard extends State<PersonDetailCard>
                               child: Container(
                                 child: ListView.builder(
                                   controller: scrollController,
-                                  itemCount: 3,
+                                  itemCount: toRender.length,
                                   itemBuilder: (BuildContext context, int index) {
-                                    return DateDetail(LineAwesomeIcons.heart);
+                                    return DateDetail(toRender[index]);
                                   },
                                 ),
                               ),

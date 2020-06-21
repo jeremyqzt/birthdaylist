@@ -4,17 +4,18 @@ import '../color_gradient.dart';
 import '../toggle_switch.dart';
 import '../date_picker.dart';
 import '../button_list.dart';
+import '../../utils/supported_dates.dart';
 
 class DateDetail extends StatefulWidget {
-  final IconData icon;
-  DateDetail(this.icon);
+  final dynamic _info;
+  DateDetail(this._info);
   @override
-  State<StatefulWidget> createState() => _DateDetail(icon);
+  State<StatefulWidget> createState() => _DateDetail(_info);
 }
 
 class _DateDetail extends State<DateDetail> {
-  final IconData _icon;
-  _DateDetail(this._icon);
+  final dynamic _info;
+  _DateDetail(this._info);
 
   int age = 26;
   @override
@@ -28,7 +29,7 @@ class _DateDetail extends State<DateDetail> {
           },
           leading: ColorGradient(
               child: Icon(
-                this._icon,
+                supportedDateUtil.getIconFromDay(this._info["type"]),
                 size: 50,
                 color: Colors.white,
               )

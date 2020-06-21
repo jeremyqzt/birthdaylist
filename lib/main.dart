@@ -10,7 +10,6 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   imDb inMemDb = new imDb();
   await inMemDb.readDisk();
-  print(inMemDb["savedEntries"]);
   runApp(App(inMemDb));
 }
 
