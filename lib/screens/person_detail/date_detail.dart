@@ -36,8 +36,8 @@ class _DateDetail extends State<DateDetail> {
                 size: 50,
                 color: Colors.white,
               ),
-              colorA: Colors.green,
-              colorB: Colors.yellow
+              colorA: Colors.red,
+              colorB: Colors.red
           ),
           title: Padding(
             padding: EdgeInsets.fromLTRB(0, 1.0, 0, 10.0),
