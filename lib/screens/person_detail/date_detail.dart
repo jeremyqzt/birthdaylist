@@ -35,7 +35,9 @@ class _DateDetail extends State<DateDetail> {
                 supportedDateUtil.getIconFromDay(dateType),
                 size: 50,
                 color: Colors.white,
-              )
+              ),
+              colorA: Colors.green,
+              colorB: Colors.yellow
           ),
           title: Padding(
             padding: EdgeInsets.fromLTRB(0, 1.0, 0, 10.0),
