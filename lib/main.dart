@@ -4,6 +4,8 @@ import 'screens/person_detail/person_detail_card.dart';
 import "utils/im_db.dart";
 import "utils/file_util.dart";
 import 'screens/date_detail/date_detail.dart';
+import 'screens/V2/date_datails.dart';
+
 import 'style.dart';
 
 void main() async{
@@ -22,7 +24,8 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home:PersonDetailCard(this.inMemDb), // PersonDetail(),
+      debugShowCheckedModeBanner: false,
+      home: DatePicker(), //PersonDetailCard(this.inMemDb), // PersonDetail(),
       theme: ThemeData(
         appBarTheme: AppBarTheme(
           textTheme: TextTheme(headline6: AppBarTextStyle)
