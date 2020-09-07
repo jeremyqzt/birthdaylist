@@ -1,34 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import './contact_card.dart';
 
 //https://stackoverflow.com/questions/55769270/how-can-i-put-a-card-into-a-sliver-app-bar
-
-class CustomCard extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        child: new Stack(
-          children: <Widget>[
-            Card(
-              child: Container(
-                height: 200.0,
-              ),
-            ),
-            FractionalTranslation(
-              translation: Offset(0.0, -0.4),
-              child: Align(
-                child: CircleAvatar(
-                  radius: 25.0,
-                  child: Text("A"),
-                ),
-                alignment: FractionalOffset(0.5, 0.0),
-              ),
-            ),
-          ],
-        ),
-    );
-  }
-}
 
 class PlayingSlivers extends StatefulWidget {
   PlayingSlivers();
@@ -52,7 +26,13 @@ class PlayingSliversState extends State<PlayingSlivers> {
             ),
             SliverFillRemaining(
               child: Center(
-                child: Text("data"),
+                child: ListView.builder(
+                    itemCount: 15,
+                    padding: EdgeInsets.fromLTRB(10,0,10,0),
+                    itemBuilder: (context, index) {
+                      return ContactCard();
+                    }
+                    ),
               ),
             ),
           ],
@@ -96,6 +76,7 @@ class CustomSliverDelegate extends SliverPersistentHeaderDelegate {
                   child: Text("Everyone")),
             ),
           ),
+
           Positioned(
             left: 0.0,
             right: 0.0,
@@ -107,11 +88,12 @@ class CustomSliverDelegate extends SliverPersistentHeaderDelegate {
                 padding: EdgeInsets.symmetric(horizontal: 10 * percent),
                 child: Stack(
                     children: <Widget>[
-                        Card(
+                      Card(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(25.0),
                           ),
-                          elevation: 25.0,
+
+                          elevation: 10.0,
                           color: Colors.white,
                           child: Column(
                                 children: <Widget> [
