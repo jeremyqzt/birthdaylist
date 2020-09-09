@@ -31,6 +31,7 @@ dependencies:
   validators: ^2.0.0+1
   lunar_calendar_converter: ^1.0.4+1
   flutter_icons: ^1.1.0
+  flutter_staggered_animations: ^0.1.2
 
 dev_dependencies:
   flutter_test:

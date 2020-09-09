@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 
 class ContactCard extends StatefulWidget {
   ContactCard();
@@ -18,17 +19,49 @@ class _ContactCard extends State<ContactCard> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
           ),
-
           elevation: 5.0,
           color: Colors.white,
-          child: Column(
+          child: Stack(
+            children: [
+              AspectRatio(
+                aspectRatio: 4.5,
+                child: Opacity(
+                  opacity: 0.25,
+                  child:Image.network(
+                    "https://media.giphy.com/media/3ohhwznSVuwXu6RnEY/giphy.gif",
+                    fit: BoxFit.fitWidth,
+                ),
+              ),),
+              Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                ListTile(
-                  leading: const Icon(Icons.album),
-                ),
-              ]
-          )
+                    ListTile(
+                      subtitle:
+                      Row(
+                        mainAxisSize:  MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                            Text(
+                              'Birthday in 2 days'
+                          ),
+                        ]
+                      ),
+                      trailing: Icon(Ionicons.ios_arrow_forward),
+                      title: Text('Jeremy Qian'),
+                      leading: CircleAvatar(
+                        radius: 18.0,
+                        backgroundColor: Colors.black,
+                        child: CircleAvatar(
+                          radius: 17.0,
+                          backgroundColor: Colors.green,
+                          child: Text('JQ'),
+                        ),
+                      ),
+                    ),
+                  ]
+              ),
+            ]
+          ),
       );
   }
 
