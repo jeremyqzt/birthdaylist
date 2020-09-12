@@ -66,7 +66,7 @@ class _ContactCard extends State<ContactCard> {
   @override
   Widget build(BuildContext context) {
     return new Container(
-      padding: EdgeInsets.only(top:15),
+      padding: EdgeInsets.only(top:3),
       child:  contactCardIndividual,
     );
   }
