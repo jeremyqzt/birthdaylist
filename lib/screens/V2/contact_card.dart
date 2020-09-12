@@ -11,13 +11,11 @@ class ContactCard extends StatefulWidget {
 }
 
 class _ContactCard extends State<ContactCard> {
-  String renderUrl;
-
   Widget get contactCardIndividual {
     return
       Card(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
+            borderRadius: BorderRadius.circular(15.0),
           ),
           elevation: 5.0,
           color: Colors.white,
