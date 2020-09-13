@@ -30,6 +30,14 @@ class PlayingSliversState extends State<PlayingSlivers> {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Add your onPressed code here!
+        },
+        elevation: 10.0,
+        child: Icon(Ionicons.ios_person_add),
+        backgroundColor: Colors.blue,
+      ),
     );
   }
 }

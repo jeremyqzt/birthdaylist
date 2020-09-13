@@ -17,7 +17,7 @@ class _ContactCard extends State<ContactCard> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.0),
           ),
-          elevation: 5.0,
+          elevation: 1.0,
           color: Colors.white,
           child: Stack(
             children: [
