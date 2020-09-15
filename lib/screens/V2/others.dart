@@ -46,7 +46,7 @@ class _OthersList extends State<OthersList> {
           ContactCard(),
           SizedBox(height: 25),
           Text(
-            '🌟 Done! - Event celebrated already!',
+            '🌟 Done! - All Events celebrated already!',
             textAlign: TextAlign.left,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(fontWeight: FontWeight.bold),

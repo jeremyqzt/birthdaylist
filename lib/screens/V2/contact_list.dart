@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 import './others.dart';
 //https://stackoverflow.com/questions/55769270/how-can-i-put-a-card-into-a-sliver-app-bar
@@ -30,14 +31,46 @@ class PlayingSliversState extends State<PlayingSlivers> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Add your onPressed code here!
-        },
-        elevation: 10.0,
-        child: Icon(Ionicons.ios_person_add),
-        backgroundColor: Colors.blue,
-      ),
+      floatingActionButton: this.getActionBtn()
+    );
+  }
+
+
+  Widget getActionBtn(){
+    return SpeedDial(
+      animatedIcon: AnimatedIcons.menu_close,
+      animatedIconTheme: IconThemeData(size: 22.0),
+      // this is ignored if animatedIcon is non null
+      // child: Icon(Icons.add),
+      visible: true,
+      closeManually: false,
+      curve: Curves.bounceIn,
+      overlayColor: Colors.black,
+      overlayOpacity: 0.5,
+      onOpen: () => print('OPENING DIAL'),
+      onClose: () => print('DIAL CLOSED'),
+      tooltip: 'Speed Dial',
+      heroTag: 'speed-dial-hero-tag',
+      backgroundColor: Colors.blue,
+      foregroundColor: Colors.white,
+      elevation: 8.0,
+      shape: CircleBorder(),
+      children: [
+        SpeedDialChild(
+            child: Icon(AntDesign.adduser),
+            backgroundColor: Colors.indigoAccent,
+            label: 'Create New Contact',
+            labelStyle: TextStyle(fontSize: 18.0),
+            onTap: () => print('FIRST CHILD')
+        ),
+        SpeedDialChild(
+          child: Icon(MaterialIcons.import_contacts),
+          backgroundColor: Colors.green,
+          label: 'Importing a Existing Contact',
+          labelStyle: TextStyle(fontSize: 18.0),
+          onTap: () => print('SECOND CHILD'),
+        ),
+      ],
     );
   }
 }
