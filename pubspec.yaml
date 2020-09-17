@@ -55,6 +55,7 @@ flutter:
     - assets/config/testData.json
     - assets/images/confetti.gif
     - assets/images/confetti-bk.gif
+    - assets/images/stars.jpg
 
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

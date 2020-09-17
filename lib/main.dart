@@ -6,6 +6,7 @@ import "utils/file_util.dart";
 import 'screens/date_detail/date_detail.dart';
 import 'screens/V2/date_datails.dart';
 import 'screens/V2/contact_list.dart';
+import 'screens/V2/expanded_contact.dart';
 
 import 'style.dart';
 
@@ -26,7 +27,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: PlayingSlivers(),//DatePicker(), //PersonDetailCard(this.inMemDb), // PersonDetail(),
+      home: ExpandedContact(),//PlayingSlivers(),//DatePicker(), //PersonDetailCard(this.inMemDb), // PersonDetail(),
       theme: ThemeData(
         appBarTheme: AppBarTheme(
           textTheme: TextTheme(headline6: AppBarTextStyle)
