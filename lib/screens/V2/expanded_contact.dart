@@ -34,13 +34,37 @@ class _ExpandedContact extends State<ExpandedContact> {
         ),
           body: ListView(
             children: <Widget>[
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: 15.0),
+                      child:Text("All  Events", style: TextStyle(fontSize: 22.0),),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(right: 3.0),
+                      child: FlatButton(
+                        textColor: Colors.blueAccent,
+                        disabledColor: Colors.grey,
+                        disabledTextColor: Colors.black,
+                        onPressed: () {
+                          /*...*/
+                        },
+                        child: Text(
+                          "Create New",
+                          style: TextStyle(fontSize: 15.0),
+                        ),
+                      )
+                    ),
+                  ]
+              ),
               ListTile(
                 leading: FlutterLogo(size: 72.0),
                 title: Text('Three-line ListTile'),
                 subtitle: Text(
                     'A sufficiently long subtitle warrants three lines.'
                 ),
-                trailing: Icon(Icons.more_vert),
+                trailing: Icon(Icons.delete),
                 isThreeLine: true,
               ),
               ListTile(
