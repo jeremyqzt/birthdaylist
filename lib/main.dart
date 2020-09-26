@@ -27,7 +27,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ExpandedContact(),//PlayingSlivers(),//DatePicker(), //PersonDetailCard(this.inMemDb), // PersonDetail(),
+      home: ExpandedContact(),//PlayingSlivers(),//ExpandedContact(), //PersonDetailCard(this.inMemDb), // PersonDetail(),
       theme: ThemeData(
         appBarTheme: AppBarTheme(
           textTheme: TextTheme(headline6: AppBarTextStyle)
