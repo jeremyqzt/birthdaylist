@@ -27,7 +27,13 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ExpandedContact(),//PlayingSlivers(),//ExpandedContact(), //PersonDetailCard(this.inMemDb), // PersonDetail(),
+      initialRoute: '/',
+      routes: {
+        // When navigating to the "/" route, build the FirstScreen widget.
+        '/': (context) => ExpandedContact(),
+        // When navigating to the "/second" route, build the SecondScreen widget.
+        '/second': (context) => PlayingSlivers(),
+      },
       theme: ThemeData(
         appBarTheme: AppBarTheme(
           textTheme: TextTheme(headline6: AppBarTextStyle)
