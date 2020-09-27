@@ -5,7 +5,7 @@ import "utils/im_db.dart";
 import "utils/file_util.dart";
 import 'screens/date_detail/date_detail.dart';
 import 'screens/V2/date_datails.dart';
-import 'screens/V2/contact_list.dart';
+import 'screens/V2/main_screen/contact_list.dart';
 import 'screens/V2/expanded_contact.dart';
 
 import 'style.dart';
@@ -29,10 +29,8 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        // When navigating to the "/" route, build the FirstScreen widget.
         '/': (context) => ExpandedContact(),
-        // When navigating to the "/second" route, build the SecondScreen widget.
-        '/second': (context) => PlayingSlivers(),
+        '/second': (context) => ContactList(),
       },
       theme: ThemeData(
         appBarTheme: AppBarTheme(

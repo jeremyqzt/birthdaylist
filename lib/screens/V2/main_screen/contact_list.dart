@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
-import './others.dart';
+import '../others.dart';
 //https://stackoverflow.com/questions/55769270/how-can-i-put-a-card-into-a-sliver-app-bar
 
-class PlayingSlivers extends StatefulWidget {
-  PlayingSlivers();
+class ContactList extends StatefulWidget {
+  ContactList();
   @override
-  State<StatefulWidget> createState() => PlayingSliversState();
+  State<StatefulWidget> createState() => _ContactList();
 }
 
-class PlayingSliversState extends State<PlayingSlivers> {
+class _ContactList extends State<ContactList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
