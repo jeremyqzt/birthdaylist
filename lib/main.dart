@@ -29,8 +29,8 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) => ExpandedContact(),
-        '/second': (context) => ContactList(this.inMemDb),
+        '/second': (context) => ExpandedContact(),
+        '/': (context) => ContactList(this.inMemDb),
       },
       theme: ThemeData(
         appBarTheme: AppBarTheme(
