@@ -4,30 +4,33 @@ import 'dart:convert';
 class imDb{
   String fp;
   dynamic jsonDb;
-  bool _doneRead;
-  imDb(){
-    this._doneRead = false;
-  }
+  imDb();
 
   operator [](String keyStr) {
-    if (this._doneRead){
-      return  this.jsonDb[keyStr];
-    }
+    return  this.jsonDb[keyStr];
   }
 
   readDisk() async{
     String assetFile;
     await FileUtil.getAssetFile("assets/config/testData.json").then(
-            (asset) {
-              assetFile = asset;
-              this.__convertToJson(assetFile);
-              this._doneRead = true;
+            (asset) => {
+              this.__convertToJson(asset)
             }
     );
   }
 
+  dynamic getMostRecent(){
+    dynamic mostRecent = null;
+    dynamic cur = null;
+    for(var i = 0; i < this.jsonDb.length; i++){
+      print(this.jsonDb[i]["savedDays"]);
+      //cur = this.jsonDb["savedDays"][i]["date"];
+      //print(cur);
+    }
+  }
+
   __convertToJson(String inJson){
-    this.jsonDb = json.decode(inJson);
+    this.jsonDb = json.decode(inJson)["savedEntries"];
   }
 
   //getAllSavedEntries(){
