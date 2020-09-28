@@ -1,25 +1,29 @@
 import 'package:flutter/material.dart';
 import 'contact_card.dart';
 import 'left_right_text.dart';
+import "../../../utils/im_db.dart";
 
 class OthersList extends StatefulWidget {
-  OthersList();
+  imDb db;
+  OthersList(this.db);
 
   @override
   State<StatefulWidget> createState() {
-    return _OthersList();
+    return _OthersList(this.db);
   }
 }
 
 class _OthersList extends State<OthersList> {
+  imDb db;
+  _OthersList(this.db);
 
+  @override
   Widget build(BuildContext context){
     return new SingleChildScrollView(
       child: buildList(),
     );
   }
 
-  @override
   Widget buildList() {
     return new Container(
       padding: EdgeInsets.only(top:15),

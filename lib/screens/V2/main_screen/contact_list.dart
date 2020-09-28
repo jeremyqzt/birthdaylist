@@ -33,7 +33,7 @@ class _ContactList extends State<ContactList> {
               ),
             ),
             SliverFillRemaining(
-              child: OthersList(),
+              child: OthersList(this.db),
             ),
           ],
         ),
