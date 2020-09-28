@@ -19,7 +19,7 @@ void main() async{
 
 class App extends StatelessWidget {
   imDb inMemDb;
-  App(db){
+  App(imDb db){
     this.inMemDb = db;
   }
 
@@ -30,7 +30,7 @@ class App extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => ExpandedContact(),
-        '/second': (context) => ContactList(),
+        '/second': (context) => ContactList(this.inMemDb),
       },
       theme: ThemeData(
         appBarTheme: AppBarTheme(

@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import "../../../utils/im_db.dart";
 
 import '../others.dart';
-//https://stackoverflow.com/questions/55769270/how-can-i-put-a-card-into-a-sliver-app-bar
 
 class ContactList extends StatefulWidget {
-  ContactList();
+  imDb db;
+
+  ContactList(imDb db){
+    this.db = db;
+  }
   @override
-  State<StatefulWidget> createState() => _ContactList();
+  State<StatefulWidget> createState() => _ContactList(this.db);
 }
 
 class _ContactList extends State<ContactList> {
+  imDb db;
+  _ContactList(imDb db){
+    this.db = db;
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
