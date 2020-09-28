@@ -21,15 +21,6 @@ class _ContactCard extends State<ContactCard> {
           color: Colors.white,
           child: Stack(
             children: [
-              AspectRatio(
-                aspectRatio: 4.5,
-                child: Opacity(
-                  opacity: 0.25,
-                  child:Image.network(
-                    "https://media.giphy.com/media/3ohhwznSVuwXu6RnEY/giphy.gif",
-                    fit: BoxFit.fitWidth,
-                ),
-              ),),
               Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
