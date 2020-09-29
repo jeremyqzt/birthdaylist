@@ -1,9 +1,12 @@
 import "file_util.dart";
 import 'dart:convert';
+import 'person.dart';
 
 class imDb{
   String fp;
   dynamic jsonDb;
+  List<Person> allContacts;
+
   imDb();
 
   operator [](String keyStr) {
@@ -11,15 +14,19 @@ class imDb{
   }
 
   readDisk() async{
-    String assetFile;
     await FileUtil.getAssetFile("assets/config/testData.json").then(
-            (asset) => {
-              this.__convertToJson(asset)
-            }
+       (asset) => {
+         this.jsonDb = this.__convertToJson(asset)
+       }
     );
   }
 
+  List<Person> get(dynamic json){
+    
+  }
+
   dynamic getMostRecent(){
+    List ret = [];
     dynamic mostRecent = null;
     dynamic cur = null;
     for(var i = 0; i < this.jsonDb.length; i++){
@@ -30,16 +37,14 @@ class imDb{
   }
 
   __convertToJson(String inJson){
-    this.jsonDb = json.decode(inJson)["savedEntries"];
+    return json.decode(inJson)["savedEntries"];
   }
 
-  //getAllSavedEntries(){
-   // return this.jsonDb["savedEntries"];
-  //}
+  getRawEntries(){
+    return this.jsonDb;
+  }
 
   flushToDisk(){
     FileUtil.writeFile(json.decode(this.jsonDb));
   }
-
-
 }
