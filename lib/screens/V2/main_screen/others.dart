@@ -31,14 +31,14 @@ class _OthersList extends State<OthersList> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           SizedBox(height: 25),
-          LeftRightText("⌛ Coming up", "Within the next 30 days!"),
+          LeftRightText("⌛ Coming up", "Next 30 days"),
           ContactCard(),
           ContactCard(),
           SizedBox(height: 25),
-          LeftRightText("🎀 Coming Up", "Later in the year"),
+          LeftRightText("🎀 Coming Up", "Later this year"),
           ContactCard(),
           SizedBox(height: 25),
-          LeftRightText("🌟 Done!", "All Events celebrated!"),
+          LeftRightText("🌟 Done!", "All celebrated"),
           ContactCard(),
         ],
       )
