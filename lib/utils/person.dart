@@ -17,6 +17,16 @@ class Person {
 
   List<Event> buildEvents(dynamic inJson){
     print(inJson);
+    List<Event> ret = [];
+    Event item = null;
+    DateTime eventTime = null;
+    for(var i = 0; i < inJson.length; i++){
+      eventTime = DateTime.parse(inJson[i]["date"]);
+      item = new Event(inJson[i]["type"], eventTime, inJson[i]["messageContent"], inJson[i]["reminderDay"], inJson[i]["reminderprior"], inJson[i]["automessage"]);
+      ret.add(item);
+    }
+
+    return ret;
   }
 
   String toString() => "Name (${this.id}): ${this.firstName} ${this.lastName}, Recorded Events: ${this.events}";
