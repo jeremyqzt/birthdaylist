@@ -10,7 +10,7 @@ class Event {
 
   DateTime getThisYearEvent(){
     DateTime currently = DateTime.now();
-    
+
   }
 
   String toString() => "Event Type (${this.eventType}) @ ${this.eventTime}. Msg: ${this.eventMessage}";

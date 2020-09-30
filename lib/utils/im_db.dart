@@ -23,7 +23,7 @@ class imDb{
 
   List<Person> enumeratePersons(){
     List<Person> ret = [];
-    Person item = null;
+    Person item ;
     for(var i = 0; i < this.jsonDb.length; i++){
       item = new Person(this.jsonDb[i]["firstName"], this.jsonDb[i]["lastName"], this.jsonDb[i]["id"], null, this.jsonDb[i]["savedDays"]);
       ret.add(item);
@@ -35,8 +35,8 @@ class imDb{
 
   dynamic getMostRecent(){
     List ret = [];
-    dynamic mostRecent = null;
-    dynamic cur = null;
+    dynamic mostRecent;
+    dynamic cur;
     for(var i = 0; i < this.jsonDb.length; i++){
       print(this.jsonDb[i]["savedDays"]);
       //cur = this.jsonDb["savedDays"][i]["date"];

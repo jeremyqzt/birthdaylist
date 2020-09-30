@@ -3,12 +3,6 @@ import 'package:flutter/services.dart';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 
-// https://flutter.dev/docs/cookbook/persistence/reading-writing-files
-/*
-    Usage:
-    FileUtil.writeBirthday('{"jeremy":"1990-01-01"}');
-    FileUtil.readBirthday();
- */
 class FileUtil {
   static Future<String> get _localPath async {
     final directory = await getApplicationDocumentsDirectory();
