@@ -19,10 +19,11 @@ class Person {
     print(inJson);
     List<Event> ret = [];
     Event item;
-    DateTime eventTime;
+    DateTime eventTime, lunarEventTime;
     for(var i = 0; i < inJson.length; i++){
       eventTime = DateTime.parse(inJson[i]["date"]);
-      item = new Event(inJson[i]["type"], eventTime, inJson[i]["messageContent"], inJson[i]["reminderDay"], inJson[i]["reminderprior"], inJson[i]["automessage"]);
+      lunarEventTime = DateTime.parse(inJson[i]["lunarDate"]);
+      item = new Event(inJson[i]["type"], eventTime, lunarEventTime, inJson[i]["messageContent"], inJson[i]["reminderDay"], inJson[i]["reminderprior"], inJson[i]["automessage"]);
       ret.add(item);
     }
 
