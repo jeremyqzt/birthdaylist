@@ -25,7 +25,7 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    this.inMemDb.getMostRecent();
+    this.inMemDb.enumeratePersons();
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,

@@ -21,8 +21,16 @@ class imDb{
     );
   }
 
-  List<Person> get(dynamic json){
-    
+  List<Person> enumeratePersons(){
+    List<Person> ret = [];
+    Person item = null;
+    for(var i = 0; i < this.jsonDb.length; i++){
+      item = new Person(this.jsonDb[i]["firstName"], this.jsonDb[i]["firstName"], this.jsonDb[i]["id"], null, this.jsonDb[i]["savedDays"]);
+      ret.add(item);
+      print(item);
+    }
+
+    return ret;
   }
 
   dynamic getMostRecent(){
