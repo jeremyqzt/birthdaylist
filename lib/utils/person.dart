@@ -27,5 +27,13 @@ class Person {
     return ret;
   }
 
+  List<Event> getMostSoonEvent(){
+    DateTime currently = DateTime.now();
+    List<Event> ret = [];
+    for(var i = 0; i <  this.events.length; i++){
+
+    }
+  }
+
   String toString() => "Name (${this.id}): ${this.firstName} ${this.lastName}, Recorded Events: ${this.events}";
 }

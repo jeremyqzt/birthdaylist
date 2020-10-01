@@ -19,6 +19,7 @@ class imDb{
          this.jsonDb = this.__convertToJson(asset)
        }
     );
+    this.allContacts = this.enumeratePersons();
   }
 
   List<Person> enumeratePersons(){
