@@ -1,28 +1,31 @@
 import 'package:lunar_calendar_converter/lunar_solar_converter.dart';
 
 class Event {
-  int eventType;
-  DateTime eventTime, lunarEventTime;
+  dynamic inJson;
+  int eventType, year, month, day;
+  int dayType;
 
-  String eventMessage;
+  String eventMessage, title;
   bool reminder;
   bool earlyReminder;
   bool autoMessage;
-  Event(this.eventType, this.eventTime, this.lunarEventTime, this.eventMessage, this.reminder, this.earlyReminder, this.autoMessage,){
+  Event(this.inJson){
+    this.buildInternal();
     this.getThisYearEvent();
+  }
+
+  void buildInternal(){
+    this.dayType = this.inJson["dateType"];
+    this.eventType = this.inJson["type"];
+    this.eventMessage = this.inJson["messageContent"];
   }
 
   DateTime getThisYearEvent(){
     DateTime currently = DateTime.now();
-    DateTime nextEvent = new DateTime(currently.year, this.eventTime.month, this.eventTime.day);
-    Solar solarEventOrigin = Solar(solarYear: this.eventTime.year, solarMonth: this.eventTime.month, solarDay: this.eventTime.day);
-    Lunar lunarEventOrigin = LunarSolarConverter.solarToLunar(solarEventOrigin);
 
-
-    print("${lunarEventOrigin.lunarYear}, ${lunarEventOrigin.lunarMonth}, ${lunarEventOrigin.lunarDay}");
     return currently;
   }
 
-  String toString() => "Event Type (${this.eventType}) @ ${this.eventTime}. Msg: ${this.eventMessage}";
+  String toString() => "Event Type (${this.eventType}). Msg: ${this.eventMessage}";
 
 }
