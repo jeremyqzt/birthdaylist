@@ -26,6 +26,10 @@ class CustomSliverDelegate extends SliverPersistentHeaderDelegate {
             height: appBarSize < kToolbarHeight ? kToolbarHeight : appBarSize,
             child: AppBar(
               backgroundColor: Colors.lightBlue,
+              leading: Opacity(
+                  opacity: hideTitleWhenExpanded ? 1.0 - percent : 1.0,
+                  child:Icon(Icons.perm_contact_calendar)
+              ),
               elevation: 0.0,
               title: Opacity(
                   opacity: hideTitleWhenExpanded ? 1.0 - percent : 1.0,
