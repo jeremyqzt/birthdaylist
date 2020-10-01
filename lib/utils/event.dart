@@ -15,13 +15,17 @@ class Event {
     this.getThisYearEvent();
   }
 
-  void buildInternal(){
+  void buildInternal() {
     this.dayType = this.inJson["dateType"];
     this.eventType = this.inJson["type"];
     this.eventMessage = this.inJson["messageContent"];
   }
 
-  DateTime getThisYearEvent(){
+  /*
+   * Gets the current event this year, returns null if the event has already passed.
+   * We always deal in solar days because thats easier...
+   */
+  DateTime getThisYearEvent() {
     DateTime currently = DateTime.now();
     Lunar LunarDay;
     Solar lunarConverted;
