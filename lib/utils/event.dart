@@ -22,7 +22,7 @@ class Event {
   }
 
   int getDaysFromToday(){
-    int ret = 365;
+    int ret = 366;
     DateTime thisYear = this.getThisYearEvent();
     DateTime now = DateTime.now();
 

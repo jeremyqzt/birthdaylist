@@ -1,6 +1,8 @@
 import "file_util.dart";
 import 'dart:convert';
 import 'person.dart';
+import 'event.dart';
+import 'dart:collection';
 
 class imDb{
   String fp;
@@ -33,13 +35,30 @@ class imDb{
     return ret;
   }
 
-  dynamic getMostRecentEvent(){
-    List ret = [];
-    dynamic mostRecent;
-    dynamic cur;
-    for(var i = 0; i <this.allContacts.length; i++){
+  HashMap<Person, List<Event>> getMostRecentEventBetweenAllContacts(){
+    HashMap ret = new HashMap<Person, List<Event>>();
 
+    DateTime currently = DateTime.now();
+    int minimum = 365;
+    int diff;
+    List<Event> mostRecent = [];
+    for(var i = 0; i <this.allContacts.length; i++){
+      mostRecent = this.allContacts[i].getMostSoonEvents();
+      if (mostRecent.length > 0){
+        diff = mostRecent[0].getThisYearEvent().difference(currently).inDays;
+        if (diff < minimum){
+          minimum = diff;
+          //Removes all elements
+          ret.removeWhere((key, value) => true);
+          ret[this.allContacts[i]] = mostRecent;
+
+        } else if (diff == minimum){
+          ret[this.allContacts[i]] = mostRecent;
+        }
+      }
     }
+
+    return ret;
   }
 
   __convertToJson(String inJson){
