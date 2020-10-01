@@ -5,6 +5,7 @@ class CustomSliverDelegate extends SliverPersistentHeaderDelegate {
   final double expandedHeight;
   final bool hideTitleWhenExpanded;
 
+
   CustomSliverDelegate({
     @required this.expandedHeight,
     this.hideTitleWhenExpanded = true,
@@ -25,14 +26,10 @@ class CustomSliverDelegate extends SliverPersistentHeaderDelegate {
             height: appBarSize < kToolbarHeight ? kToolbarHeight : appBarSize,
             child: AppBar(
               backgroundColor: Colors.lightBlue,
-              leading: IconButton(
-                icon: Icon(Icons.arrow_back_ios),
-                onPressed: () {},
-              ),
               elevation: 0.0,
               title: Opacity(
                   opacity: hideTitleWhenExpanded ? 1.0 - percent : 1.0,
-                  child: Text("Everyone")),
+                  child: Text("All Contacts")),
             ),
           ),
 

@@ -7,13 +7,13 @@ class LeftRightText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double leftRightPad = 10;
+    double leftRightPad = 12;
     return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Padding(
             padding: EdgeInsets.only(left: leftRightPad),
-            child:Text("${this.left}", style: TextStyle(fontSize: 16.0),),
+            child:Text("${this.left}", style: TextStyle(fontSize: 17.0),),
           ),
           Padding(
             padding: EdgeInsets.only(right: leftRightPad),
