@@ -28,20 +28,17 @@ class imDb{
     for(var i = 0; i < this.jsonDb.length; i++){
       item = new Person(this.jsonDb[i]["firstName"], this.jsonDb[i]["lastName"], this.jsonDb[i]["id"], null, this.jsonDb[i]["savedDays"]);
       ret.add(item);
-      print(item);
     }
 
     return ret;
   }
 
-  dynamic getMostRecent(){
+  dynamic getMostRecentEvent(){
     List ret = [];
     dynamic mostRecent;
     dynamic cur;
-    for(var i = 0; i < this.jsonDb.length; i++){
-      print(this.jsonDb[i]["savedDays"]);
-      //cur = this.jsonDb["savedDays"][i]["date"];
-      //print(cur);
+    for(var i = 0; i <this.allContacts.length; i++){
+
     }
   }
 

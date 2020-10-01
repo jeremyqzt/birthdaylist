@@ -21,6 +21,18 @@ class Event {
     this.eventMessage = this.inJson["messageContent"];
   }
 
+  int getDaysFromToday(){
+    int ret = 365;
+    DateTime thisYear = this.getThisYearEvent();
+    DateTime now = DateTime.now();
+
+    if (thisYear != null){
+      ret = now.difference(thisYear).inDays;
+    }
+
+    return ret;
+  }
+
   /*
    * Gets the current event this year, returns null if the event has already passed.
    * We always deal in solar days because thats easier...
@@ -34,7 +46,6 @@ class Event {
       LunarDay = Lunar(lunarYear: this.inJson["year"], lunarMonth: this.inJson["month"], lunarDay: this.inJson["day"]);
       lunarConverted = LunarSolarConverter.lunarToSolar(LunarDay);
       standard = DateTime(currently.year, lunarConverted.solarMonth, lunarConverted.solarDay);
-
     } else {
       standard = DateTime(currently.year, this.inJson["month"], this.inJson["day"]);
     }
@@ -45,6 +56,6 @@ class Event {
     return standard;
   }
 
-  String toString() => "Event Type (${this.eventType}). Msg: ${this.eventMessage}";
+  String toString() => "Event Type (${this.eventType}). This Year Occur: ${this.getThisYearEvent()} Msg: ${this.eventMessage}";
 
 }

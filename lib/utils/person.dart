@@ -13,6 +13,7 @@ class Person {
     this.id = id;
     this.relationshop = rel;
     this.events = buildEvents(events);
+    this.getMostSoonEvent();
   }
 
   List<Event> buildEvents(dynamic inJson){
@@ -28,11 +29,19 @@ class Person {
   }
 
   List<Event> getMostSoonEvent(){
-    DateTime currently = DateTime.now();
+    int diff;
     List<Event> ret = [];
+    int minimum = 365;
     for(var i = 0; i <  this.events.length; i++){
-
+      diff = this.events[i].getDaysFromToday();
+      if (diff < minimum){
+        ret = [this.events[i]];
+        minimum = diff;
+      } else if(diff == minimum){
+        ret.add(this.events[i]);
+      }
     }
+    return ret;
   }
 
   String toString() => "Name (${this.id}): ${this.firstName} ${this.lastName}, Recorded Events: ${this.events}";
