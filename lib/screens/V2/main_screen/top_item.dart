@@ -11,6 +11,18 @@ class CustomSliverDelegate extends SliverPersistentHeaderDelegate {
     this.hideTitleWhenExpanded = true,
   });
 
+  String getPicture(){
+   return  "assets/images/confetti.gif";
+  }
+
+  String getEventText(){
+    return "Melody's Birthday 🎉";
+  }
+
+  List<String> getEventContext(){
+    
+  }
+
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
     final appBarSize = expandedHeight - shrinkOffset;
@@ -60,7 +72,7 @@ class CustomSliverDelegate extends SliverPersistentHeaderDelegate {
                               SizedBox(height: 35),
                               Center(
                                 child: Text(
-                                  "Melody's Birthday 🎉",
+                                  this.getEventText(),
                                   style: TextStyle(
                                       fontSize: 20
                                   ),
@@ -127,7 +139,7 @@ class CustomSliverDelegate extends SliverPersistentHeaderDelegate {
                             backgroundColor: Colors.white,
                             child: CircleAvatar(
                               radius: 40.0,
-                              backgroundImage: AssetImage("assets/images/confetti.gif"),
+                              backgroundImage: AssetImage(this.getPicture()),
                             ),
                           ),
                           alignment: FractionalOffset(0.5, (cardTopPosition - 45)/185),
