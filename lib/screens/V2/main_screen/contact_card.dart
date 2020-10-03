@@ -2,15 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 
 class ContactCard extends StatefulWidget {
-  ContactCard();
+  String name, eventInfo, dtl;
+  ContactCard(this.name, this.eventInfo, this.dtl);
 
   @override
   State<StatefulWidget> createState() {
-    return _ContactCard();
+    return _ContactCard(this.name, this.eventInfo, this.dtl);
   }
 }
 
 class _ContactCard extends State<ContactCard> {
+  String name, eventInfo, dtl;
+  _ContactCard(this.name, this.eventInfo, this.dtl);
+
   Widget get contactCardIndividual {
     return
       Card(
@@ -31,12 +35,12 @@ class _ContactCard extends State<ContactCard> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                             Text(
-                              'Birthday in 2 days'
+                              '${this.eventInfo} in ${dtl} day(s)!'
                           ),
                         ]
                       ),
                       trailing: Icon(Ionicons.ios_arrow_forward),
-                      title: Text('Jeremy Qian'),
+                      title: Text('${this.name}'),
                       leading: CircleAvatar(
                         radius: 18.0,
                         backgroundColor: Colors.black,

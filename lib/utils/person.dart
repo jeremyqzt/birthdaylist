@@ -44,5 +44,7 @@ class Person {
     return ret;
   }
 
+  String name() => "${this.firstName} ${this.lastName}";
+
   String toString() => "${this.firstName} ${this.lastName} (${this.id})";
 }

@@ -35,6 +35,8 @@ class imDb{
     return ret;
   }
 
+  List<Person> getAllContacts() => this.allContacts;
+
   HashMap<Person, List<Event>> getMostRecentEventBetweenAllContacts(){
     HashMap ret = new HashMap<Person, List<Event>>();
 

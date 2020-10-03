@@ -27,9 +27,8 @@ class Event {
     DateTime now = DateTime.now();
 
     if (thisYear != null){
-      ret = now.difference(thisYear).inDays;
+      ret = thisYear.difference(now).inDays;
     }
-
     return ret;
   }
 
