@@ -20,7 +20,7 @@ class CustomSliverDelegate extends SliverPersistentHeaderDelegate {
   }
 
   List<String> getEventContext(){
-    
+
   }
 
   @override
@@ -38,11 +38,17 @@ class CustomSliverDelegate extends SliverPersistentHeaderDelegate {
             height: appBarSize < kToolbarHeight ? kToolbarHeight : appBarSize,
             child: AppBar(
               backgroundColor: Colors.lightBlue,
-              leading: Opacity(
-                  opacity: hideTitleWhenExpanded ? 1.0 - percent : 1.0,
-                  child:Icon(Icons.perm_contact_calendar)
-              ),
+
               elevation: 0.0,
+              actions: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(right: 12.0),
+                  child: Opacity(
+                      opacity: hideTitleWhenExpanded ? 1.0 - percent : 1.0,
+                      child:Icon(Icons.settings)
+                  ),
+                )
+              ],
               title: Opacity(
                   opacity: hideTitleWhenExpanded ? 1.0 - percent : 1.0,
                   child: Text("All Contacts")),
