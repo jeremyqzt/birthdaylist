@@ -26,36 +26,42 @@ class _OthersList extends State<OthersList> {
     );
   }
 
-  List<Widget> buildRecentEvents(){
+  List<List<Widget>> buildRecentEvents(){
     List<Person> allContacts= this.db.getAllContacts();
-    List<Widget> immediately = this.getNext30(allContacts);
+    List<List<Widget>> immediately = this.getNext30(allContacts);
     return immediately;
   }
 
-  List<Widget> getNext30(List<Person> contacts){
+  List<List<Widget>> getNext30(List<Person> contacts){
     List<Event> soon;
-    List<Widget> ret = [];
+    List<Widget> retSoon = [];
+    List<Widget> retLater = [];
+    List<Widget> retNext = [];
+
+    int EoY = DateTime(DateTime.now().year, 12, 31).difference((DateTime.now())).inDays;
+    int dayDiff;
     for (int i = 0; i < contacts.length; i++){
       soon = contacts[i].getMostSoonEvents();
       for (int j = 0; j < soon.length; j++){
-        print(soon[j].getDaysFromToday());
-        if (soon[j].getDaysFromToday() <= 60){
-          ret.add(new ContactCard(contacts[i].name(), "${soon[j].eventType}", "${soon[j].getDaysFromToday()}"));
+        dayDiff = soon[j].getDaysFromToday();
+        print(dayDiff);
+        if (dayDiff <= 30){
+          retSoon.add(new ContactCard(contacts[i].name(), "${soon[j].eventType}", "${soon[j].getDaysFromToday()}"));
+        }
+        else if(dayDiff <= EoY && dayDiff > 30){
+          retLater.add(new ContactCard(contacts[i].name(), "${soon[j].eventType}", "${soon[j].getDaysFromToday()}"));
+        }
+        else if (dayDiff > EoY){
+          retNext.add(new ContactCard(contacts[i].name(), "${soon[j].eventType}", "${soon[j].getDaysFromToday()}"));
         }
       }
     }
 
-    return ret;
+    return [retSoon, retLater,  retNext];
   }
-
-  List<Widget> laterInTheYear(List<Person> contacts){
-
-  }
-
-
 
   Widget buildList() {
-    List<Widget> toUse = this.buildRecentEvents();
+    List<List<Widget>> toUse = this.buildRecentEvents();
     return new Container(
       padding: EdgeInsets.only(top:15),
       child:  Column(
@@ -63,13 +69,13 @@ class _OthersList extends State<OthersList> {
         children: <Widget>[
           SizedBox(height: 25),
           LeftRightText("⌛ Coming up", "Next 30 days"),
-          ...toUse,
+          ...toUse[0],
           SizedBox(height: 25),
           LeftRightText("🎀 Coming Up", "Later this year"),
-          ContactCard("JQ", "Test", "1"),
+          ...toUse[1],
           SizedBox(height: 25),
           LeftRightText("🌟 Done!", "All celebrated"),
-          ContactCard("JQ", "Test", "1"),
+          ...toUse[2],
         ],
       )
     );
