@@ -37,22 +37,23 @@ class _OthersList extends State<OthersList> {
     List<Widget> retSoon = [];
     List<Widget> retLater = [];
     List<Widget> retNext = [];
+    String name = "placeholder";
 
     int EoY = DateTime(DateTime.now().year, 12, 31).difference((DateTime.now())).inDays;
     int dayDiff;
     for (int i = 0; i < contacts.length; i++){
       soon = contacts[i].getMostSoonEvents();
+      name = contacts[i].name();
       for (int j = 0; j < soon.length; j++){
         dayDiff = soon[j].getDaysFromToday();
-        print(dayDiff);
-        if (dayDiff <= 30){
-          retSoon.add(new ContactCard(contacts[i].name(), "${soon[j].eventType}", "${soon[j].getDaysFromToday()}"));
+       if (dayDiff <= 30){
+          retSoon.add(new ContactCard(name, "${soon[j].eventType}", "${dayDiff}"));
         }
         else if(dayDiff <= EoY && dayDiff > 30){
-          retLater.add(new ContactCard(contacts[i].name(), "${soon[j].eventType}", "${soon[j].getDaysFromToday()}"));
+          retLater.add(new ContactCard(name, "${soon[j].eventType}", "${dayDiff}"));
         }
         else if (dayDiff > EoY){
-          retNext.add(new ContactCard(contacts[i].name(), "${soon[j].eventType}", "${soon[j].getDaysFromToday()}"));
+          retNext.add(new ContactCard(name, "${soon[j].eventType}", "${dayDiff}"));
         }
       }
     }
@@ -67,14 +68,11 @@ class _OthersList extends State<OthersList> {
       child:  Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          SizedBox(height: 25),
-          LeftRightText("⌛ Coming up", "Next 30 days"),
+          if (toUse[0].length > 0) LeftRightText("⌛ Coming up", "Next 30 days"),
           ...toUse[0],
-          SizedBox(height: 25),
-          LeftRightText("🎀 Coming Up", "Later this year"),
+          if (toUse[1].length > 0) LeftRightText("🎀 Coming Up", "Later this year"),
           ...toUse[1],
-          SizedBox(height: 25),
-          LeftRightText("🌟 Done!", "All celebrated"),
+          if (toUse[2].length > 0) LeftRightText("🌟 Done!", "All celebrated"),
           ...toUse[2],
         ],
       )
