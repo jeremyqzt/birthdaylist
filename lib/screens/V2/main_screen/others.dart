@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'contact_card.dart';
 import 'left_right_text.dart';
+import '../common/such_empty.dart';
 import "../../../utils/im_db.dart";
 import "../../../utils/person.dart";
 import "../../../utils/event.dart";
@@ -22,7 +23,7 @@ class _OthersList extends State<OthersList> {
   @override
   Widget build(BuildContext context){
     return new SingleChildScrollView(
-      child: buildList(),
+      child: SuchEmpty()//buildList(),
     );
   }
 
@@ -57,7 +58,6 @@ class _OthersList extends State<OthersList> {
         }
       }
     }
-
     return [retSoon, retLater,  retNext];
   }
 
