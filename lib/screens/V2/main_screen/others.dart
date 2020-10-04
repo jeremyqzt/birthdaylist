@@ -32,11 +32,11 @@ class _OthersList extends State<OthersList> {
 
   List<List<Widget>> buildRecentEvents(){
     List<Person> allContacts= this.db.getAllContacts();
-    List<List<Widget>> immediately = this.getNext30(allContacts);
+    List<List<Widget>> immediately = this.getAllRecentEvents(allContacts);
     return immediately;
   }
 
-  List<List<Widget>> getNext30(List<Person> contacts){
+  List<List<Widget>> getAllRecentEvents(List<Person> contacts){
     List<Event> soon;
     List<Widget> retSoon = [];
     List<Widget> retLater = [];
