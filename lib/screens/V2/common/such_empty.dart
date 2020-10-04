@@ -5,11 +5,7 @@ class SuchEmpty extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column (
       children: <Widget>[
-        Text("Such Empty"),
-        Text(
-          "🎀️",
-        ),
-        Text("Much Wow")
+        Image.asset("assets/images/doge.jpg"),
       ],
     );
   }
