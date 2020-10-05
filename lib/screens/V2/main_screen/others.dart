@@ -5,6 +5,7 @@ import '../common/such_empty.dart';
 import "../../../utils/im_db.dart";
 import "../../../utils/person.dart";
 import "../../../utils/event.dart";
+import "../../../utils/constants.dart";
 
 class OthersList extends StatefulWidget {
   imDb db;
@@ -41,7 +42,7 @@ class _OthersList extends State<OthersList> {
     List<Widget> retSoon = [];
     List<Widget> retLater = [];
     List<Widget> retNext = [];
-    String name = "placeholder";
+    String name, eventMessage;
 
     int EoY = DateTime(DateTime.now().year, 12, 31).difference((DateTime.now())).inDays;
     int dayDiff;
@@ -50,14 +51,15 @@ class _OthersList extends State<OthersList> {
       name = contacts[i].name();
       for (int j = 0; j < soon.length; j++){
         dayDiff = soon[j].getDaysFromToday();
+        eventMessage = EventMap[SpecialDays.values[soon[j].eventType]];
        if (dayDiff <= 30){
-          retSoon.add(new ContactCard(name, "${soon[j].eventType}", "${dayDiff}"));
+          retSoon.add(new ContactCard(name, "${eventMessage}", "${dayDiff}"));
         }
         else if(dayDiff <= EoY && dayDiff > 30){
-          retLater.add(new ContactCard(name, "${soon[j].eventType}", "${dayDiff}"));
+          retLater.add(new ContactCard(name, "${eventMessage}", "${dayDiff}"));
         }
         else if (dayDiff > EoY){
-          retNext.add(new ContactCard(name, "${soon[j].eventType}", "${dayDiff}"));
+          retNext.add(new ContactCard(name, "${eventMessage}", "${dayDiff}"));
         }
       }
     }
