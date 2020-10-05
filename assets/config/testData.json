@@ -34,7 +34,7 @@
         },
         {
           "type": 3,
-          "month": 14,
+          "month": 1,
           "day": 15,
           "year": 2000,
           "dateType": 0,
@@ -58,7 +58,7 @@
           "month": 10,
           "day": 10,
           "year": 1990,
-          "dateType": 0,
+          "dateType": 1,
           "yearInputed": true,
           "reminderDay": true,
           "reminderprior": true,
