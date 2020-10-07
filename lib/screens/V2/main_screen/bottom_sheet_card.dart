@@ -9,13 +9,21 @@ class _BottomSheetCard extends State<BottomSheetCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 5, left: 15, right: 15),
-      height: 250,
-      child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: []
+      color: Colors.transparent,
+      child: Container(
+        height: 300,
+        decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: new BorderRadius.only(
+        topLeft: const Radius.circular(10.0),
+        topRight: const Radius.circular(10.0))
       ),
+      child:Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: []
+        ),
+      )
     );
   }
 }
