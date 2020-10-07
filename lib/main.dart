@@ -30,6 +30,8 @@ class App extends StatelessWidget {
         '/': (context) => ContactList(this.inMemDb),
       },
       theme: ThemeData(
+        canvasColor: Colors.transparent,
+        scaffoldBackgroundColor: Colors.grey[50],
         appBarTheme: AppBarTheme(
           textTheme: TextTheme(headline6: AppBarTextStyle)
         ),

@@ -10,19 +10,20 @@ class _BottomSheetCard extends State<BottomSheetCard> {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.transparent,
-      child: Container(
-        height: 300,
-        decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: new BorderRadius.only(
-        topLeft: const Radius.circular(10.0),
-        topRight: const Radius.circular(10.0))
-      ),
-      child:Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: []
-        ),
+      child: Padding(
+          padding: EdgeInsets.only(left: 5, right: 5, bottom: 20),
+          child: Container(
+            height: 250,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(25),
+            ),
+            child:Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: []
+            ),
+        )
       )
     );
   }
