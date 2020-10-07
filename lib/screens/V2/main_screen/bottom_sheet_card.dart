@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class BottomSheet extends StatefulWidget {
+class BottomSheetCard extends StatefulWidget {
   @override
-  _BottomSheet createState() => _BottomSheet();
+  _BottomSheetCard createState() => _BottomSheetCard();
 }
 
-class _BottomSheet extends State<BottomSheet> {
+class _BottomSheetCard extends State<BottomSheetCard> {
   @override
   Widget build(BuildContext context) {
     return Container(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import './bottom_sheet_card.dart';
 
 class ActionBtn extends StatelessWidget {
   @override
@@ -29,7 +30,14 @@ class ActionBtn extends StatelessWidget {
             backgroundColor: Colors.indigoAccent,
             label: 'Create New Contact',
             labelStyle: TextStyle(fontSize: 18.0),
-            onTap: () => print('FIRST CHILD')
+            onTap: () => {
+              showModalBottomSheet(
+                context: context,
+                builder: (BuildContext buildContext){
+                 return BottomSheetCard();
+                }
+              )
+            }
         ),
         SpeedDialChild(
           child: Icon(MaterialIcons.import_contacts),
