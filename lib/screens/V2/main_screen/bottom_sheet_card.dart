@@ -13,7 +13,7 @@ class _BottomSheetCard extends State<BottomSheetCard> {
       child: Padding(
           padding: EdgeInsets.only(left: 5, right: 5, bottom: 20),
           child: Container(
-            height: 250,
+            height: 500,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(25),
