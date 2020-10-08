@@ -25,7 +25,7 @@ class _OthersList extends State<OthersList> {
   Widget build(BuildContext context){
     List<List<Widget>> toUse = this.buildRecentEvents();
     bool isEmpty = toUse[0].length == 0 && toUse[1].length == 0 && toUse[2].length == 0;
-    return !isEmpty ? SuchEmpty() :
+    return isEmpty ? SuchEmpty() :
       SingleChildScrollView(
       child: buildList(toUse),
     );
