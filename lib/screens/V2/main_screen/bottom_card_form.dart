@@ -17,21 +17,30 @@ class _BottomCardForm extends State<BottomCardForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          new Row(
-          children:[
-            Expanded(child: TextFormField(
-              decoration: const InputDecoration(
-                hintText: 'Enter your email',
+          Padding(
+            padding: const EdgeInsets.all(30.0),
+            child: new Row(children: [
+              Expanded(
+                child: TextFormField(
+                  decoration: const InputDecoration(
+                    hintText: 'First Name',
+                  ),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please enter a first name';
+                    }
+                    return null;
+                  },
+                ),
               ),
-              validator: (value) {
-                if (value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
-            ),
-            ),
-          ]
+              Expanded(
+                child: TextFormField(
+                  decoration: const InputDecoration(
+                    hintText: 'Last Name',
+                  ),
+                ),
+              ),
+            ]),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30.0),
