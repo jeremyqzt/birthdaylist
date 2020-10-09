@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './bottom_card_form.dart';
 
 class BottomSheetCard extends StatefulWidget {
   @override
@@ -21,7 +22,11 @@ class _BottomSheetCard extends State<BottomSheetCard> {
             child:Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: []
+                children: [
+                  Expanded(
+                      child: BottomCardForm(),
+                  )
+                ]
             ),
         )
       )
