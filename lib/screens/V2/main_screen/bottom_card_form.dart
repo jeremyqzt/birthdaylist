@@ -10,7 +10,9 @@ class BottomCardForm extends StatefulWidget {
 class _BottomCardForm extends State<BottomCardForm> {
   final _formKey = GlobalKey<FormState>();
 
-  String date_val = '';
+  String dateVal = 'Select A Date';
+  String pickedDateType = '☀';
+  bool isLunar = false;
 
   Future selectDate() async {
     DateTime picked = await showDatePicker(
@@ -19,7 +21,7 @@ class _BottomCardForm extends State<BottomCardForm> {
       firstDate: new DateTime(1900),
       lastDate: new DateTime.now(),
     );
-    if (picked != null) setState(() => date_val = picked.toString());
+    if (picked != null) setState(() => dateVal = picked.toString());
   }
 
   @override
@@ -64,8 +66,27 @@ class _BottomCardForm extends State<BottomCardForm> {
               Expanded(
                   child: new RaisedButton(
                 onPressed: selectDate,
-                child: new Text(date_val),
+                child: new Text(dateVal),
               )),
+              Switch(
+                value: isLunar,
+                onChanged: (value) {
+                  String newSymbol = "☀";
+                  if (value) {
+                    print("setting");
+                    newSymbol = "🌙";
+                  }
+                  setState(() {
+                    isLunar = value;
+                    pickedDateType = newSymbol;
+                  });
+                },
+                inactiveThumbColor: Colors.orange,
+                inactiveTrackColor: Colors.orange,
+                activeTrackColor: Colors.yellowAccent,
+                activeColor: Colors.yellow,
+              ),
+              new Text(pickedDateType)
             ]),
           ),
           Padding(
