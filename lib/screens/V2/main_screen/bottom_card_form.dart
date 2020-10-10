@@ -75,34 +75,29 @@ class _BottomCardForm extends State<BottomCardForm> {
                 padding: const EdgeInsets.only(right: 10.0),
                 child: DropdownButton<String>(
                   dropdownColor: Colors.white,
-                value: dropdownValue,
-                icon: Icon(Icons.arrow_downward),
-                iconSize: 24,
-                elevation: 16,
-                style: TextStyle(color: Colors.black),
-                underline: Container(
-                  height: 1,
-                  color: Colors.blue,
+                  value: dropdownValue,
+                  icon: Icon(Icons.arrow_downward),
+                  iconSize: 24,
+                  elevation: 16,
+                  style: TextStyle(color: Colors.black),
+                  underline: Container(
+                    height: 1,
+                    color: Colors.blue,
+                  ),
+                  onChanged: (String newValue) {
+                    setState(() {
+                      dropdownValue = newValue;
+                    });
+                  },
+                  items: constantSpecialDayStrings
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
                 ),
-                onChanged: (String newValue) {
-                  setState(() {
-                    dropdownValue = newValue;
-                  });
-                },
-                items: constantSpecialDayStrings
-                    .map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
               ),
-              ),
-              Expanded(
-                  child: new OutlineButton(
-                    onPressed: selectDate,
-                    child: new Text(dateVal),
-                  )),
               IconButton(
                 icon: Icon(pickedDateType),
                 onPressed: () => {
@@ -120,6 +115,11 @@ class _BottomCardForm extends State<BottomCardForm> {
                     }
                 },
               ),
+              Expanded(
+                  child: new OutlineButton(
+                onPressed: selectDate,
+                child: new Text(dateVal),
+              )),
             ]),
           ),
           Padding(
