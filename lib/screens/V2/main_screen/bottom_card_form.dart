@@ -10,7 +10,7 @@ class BottomCardForm extends StatefulWidget {
 
 class _BottomCardForm extends State<BottomCardForm> {
   final _formKey = GlobalKey<FormState>();
-
+  String dropdownValue = 'Birthday';
   String dateVal = 'Select A Date';
   String pickedDateType = '☀';
   bool isLunar = false;
@@ -35,7 +35,8 @@ class _BottomCardForm extends State<BottomCardForm> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.all(30.0),
+            padding: const EdgeInsets.only(
+                left: 30.0, right: 30, top: 30, bottom: 10),
             child: new Row(children: [
               Expanded(
                 child: TextFormField(
@@ -63,8 +64,32 @@ class _BottomCardForm extends State<BottomCardForm> {
             ]),
           ),
           Padding(
-            padding: const EdgeInsets.all(30.0),
+            padding: const EdgeInsets.only(left: 30.0, right: 30.0),
             child: new Row(children: [
+              DropdownButton<String>(
+                dropdownColor: Colors.white,
+                value: dropdownValue,
+                icon: Icon(Icons.arrow_downward),
+                iconSize: 24,
+                elevation: 16,
+                style: TextStyle(color: Colors.black),
+                underline: Container(
+                  height: 1,
+                  color: Colors.blue,
+                ),
+                onChanged: (String newValue) {
+                  setState(() {
+                    dropdownValue = newValue;
+                  });
+                },
+                items: <String>['Birthday', 'Two', 'Free', 'Four']
+                    .map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
               Expanded(
                   child: new RaisedButton(
                 onPressed: selectDate,
