@@ -28,6 +28,7 @@ class _BottomCardForm extends State<BottomCardForm> {
       key: _formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.all(30.0),

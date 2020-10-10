@@ -32,10 +32,18 @@ class ActionBtn extends StatelessWidget {
             labelStyle: TextStyle(fontSize: 18.0),
             onTap: () => {
               showModalBottomSheet(
-                context: context,
-                builder: (BuildContext buildContext){
-                 return BottomSheetCard();
-                }
+                      isScrollControlled: true,
+                      context: context,
+                  builder: (BuildContext buildContext){
+                    return Container(
+                        padding:
+                        EdgeInsets.only(bottom: MediaQuery
+                            .of(context)
+                            .viewInsets
+                            .bottom),
+                        child: BottomSheetCard()
+                    );
+                  }
               )
             }
         ),
