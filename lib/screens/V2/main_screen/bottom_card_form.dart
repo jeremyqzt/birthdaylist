@@ -23,6 +23,9 @@ class _BottomCardForm extends State<BottomCardForm> {
       initialDate: new DateTime.now(),
       firstDate: new DateTime(1900),
       lastDate: new DateTime.now(),
+      helpText: 'Select the event date!',
+      cancelText: 'Cancel',
+      confirmText: 'Select',
     );
     if (picked != null) setState(() => dateVal = formatter.format(picked));
   }
@@ -68,8 +71,10 @@ class _BottomCardForm extends State<BottomCardForm> {
           Padding(
             padding: const EdgeInsets.only(left: 30.0, right: 30.0),
             child: new Row(children: [
-              DropdownButton<String>(
-                dropdownColor: Colors.white,
+              Padding(
+                padding: const EdgeInsets.only(right: 10.0),
+                child: DropdownButton<String>(
+                  dropdownColor: Colors.white,
                 value: dropdownValue,
                 icon: Icon(Icons.arrow_downward),
                 iconSize: 24,
@@ -92,8 +97,9 @@ class _BottomCardForm extends State<BottomCardForm> {
                   );
                 }).toList(),
               ),
+              ),
               Expanded(
-                  child: new RaisedButton(
+                  child: new OutlineButton(
                     onPressed: selectDate,
                     child: new Text(dateVal),
                   )),
