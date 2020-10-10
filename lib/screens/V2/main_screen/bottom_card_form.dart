@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../../utils/constants.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 
 class BottomCardForm extends StatefulWidget {
   BottomCardForm({Key key}) : super(key: key);
@@ -13,7 +14,7 @@ class _BottomCardForm extends State<BottomCardForm> {
   final _formKey = GlobalKey<FormState>();
   String dropdownValue = constantSpecialDayStrings[0];
   String dateVal = 'Select A Date';
-  String pickedDateType = '☀';
+  IconData pickedDateType = Feather.moon;
   bool isLunar = false;
   final DateFormat formatter = DateFormat.yMMMMd('en_US');
 
@@ -32,7 +33,6 @@ class _BottomCardForm extends State<BottomCardForm> {
 
   @override
   Widget build(BuildContext context) {
-    print(constantSpecialDayStrings);
     return Form(
       key: _formKey,
       child: Column(
@@ -103,25 +103,23 @@ class _BottomCardForm extends State<BottomCardForm> {
                     onPressed: selectDate,
                     child: new Text(dateVal),
                   )),
-              Switch(
-                value: isLunar,
-                onChanged: (value) {
-                  String newSymbol = "☀";
-                  if (value) {
-                    print("setting");
-                    newSymbol = "🌙";
-                  }
-                  setState(() {
-                    isLunar = value;
-                    pickedDateType = newSymbol;
-                  });
+              IconButton(
+                icon: Icon(pickedDateType),
+                onPressed: () => {
+                  if (pickedDateType == Feather.moon)
+                    {
+                      setState(() {
+                        pickedDateType = Feather.sun;
+                      })
+                    }
+                  else
+                    {
+                      setState(() {
+                        pickedDateType = Feather.moon;
+                      })
+                    }
                 },
-                inactiveThumbColor: Colors.orange,
-                inactiveTrackColor: Colors.orange,
-                activeTrackColor: Colors.yellowAccent,
-                activeColor: Colors.yellow,
               ),
-              new Text(pickedDateType)
             ]),
           ),
           Padding(
