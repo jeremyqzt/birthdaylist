@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import '../../../utils/constants.dart';
 
 class BottomCardForm extends StatefulWidget {
   BottomCardForm({Key key}) : super(key: key);
@@ -10,7 +11,7 @@ class BottomCardForm extends StatefulWidget {
 
 class _BottomCardForm extends State<BottomCardForm> {
   final _formKey = GlobalKey<FormState>();
-  String dropdownValue = 'Birthday';
+  String dropdownValue = constantSpecialDayStrings[0];
   String dateVal = 'Select A Date';
   String pickedDateType = '☀';
   bool isLunar = false;
@@ -28,6 +29,7 @@ class _BottomCardForm extends State<BottomCardForm> {
 
   @override
   Widget build(BuildContext context) {
+    print(constantSpecialDayStrings);
     return Form(
       key: _formKey,
       child: Column(
@@ -82,7 +84,7 @@ class _BottomCardForm extends State<BottomCardForm> {
                     dropdownValue = newValue;
                   });
                 },
-                items: <String>['Birthday', 'Two', 'Free', 'Four']
+                items: constantSpecialDayStrings
                     .map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
@@ -92,9 +94,9 @@ class _BottomCardForm extends State<BottomCardForm> {
               ),
               Expanded(
                   child: new RaisedButton(
-                onPressed: selectDate,
-                child: new Text(dateVal),
-              )),
+                    onPressed: selectDate,
+                    child: new Text(dateVal),
+                  )),
               Switch(
                 value: isLunar,
                 onChanged: (value) {
