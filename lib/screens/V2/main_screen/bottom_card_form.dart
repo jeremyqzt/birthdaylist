@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class BottomCardForm extends StatefulWidget {
   BottomCardForm({Key key}) : super(key: key);
@@ -13,6 +14,7 @@ class _BottomCardForm extends State<BottomCardForm> {
   String dateVal = 'Select A Date';
   String pickedDateType = '☀';
   bool isLunar = false;
+  final DateFormat formatter = DateFormat.yMMMMd('en_US');
 
   Future selectDate() async {
     DateTime picked = await showDatePicker(
@@ -21,7 +23,7 @@ class _BottomCardForm extends State<BottomCardForm> {
       firstDate: new DateTime(1900),
       lastDate: new DateTime.now(),
     );
-    if (picked != null) setState(() => dateVal = picked.toString());
+    if (picked != null) setState(() => dateVal = formatter.format(picked));
   }
 
   @override
