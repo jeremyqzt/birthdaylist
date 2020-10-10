@@ -10,6 +10,18 @@ class BottomCardForm extends StatefulWidget {
 class _BottomCardForm extends State<BottomCardForm> {
   final _formKey = GlobalKey<FormState>();
 
+  String date_val = '';
+
+  Future selectDate() async {
+    DateTime picked = await showDatePicker(
+      context: context,
+      initialDate: new DateTime.now(),
+      firstDate: new DateTime(1900),
+      lastDate: new DateTime.now(),
+    );
+    if (picked != null) setState(() => date_val = picked.toString());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -38,8 +50,21 @@ class _BottomCardForm extends State<BottomCardForm> {
                   decoration: const InputDecoration(
                     hintText: 'Last Name',
                   ),
+                  validator: (value) {
+                    return null;
+                  },
                 ),
               ),
+            ]),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(30.0),
+            child: new Row(children: [
+              Expanded(
+                  child: new RaisedButton(
+                onPressed: selectDate,
+                child: new Text(date_val),
+              )),
             ]),
           ),
           Padding(
@@ -50,7 +75,7 @@ class _BottomCardForm extends State<BottomCardForm> {
                   // Process data.
                 }
               },
-              child: Text('Submit'),
+              child: Text('Save Contact'),
             ),
           ),
         ],
