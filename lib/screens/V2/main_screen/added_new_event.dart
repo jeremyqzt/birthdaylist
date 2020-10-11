@@ -6,7 +6,14 @@ class AddedNewEventList extends StatefulWidget {
 
 class _AddedNewEventList extends State<AddedNewEventList> {
   Widget getEmpty() {
-    return null;
+    return Row(children: [
+      Image.asset(
+        "assets/images/note2.jpg",
+        height: 100,
+        fit: BoxFit.fill,
+      ),
+      Text("Add some Evets!")
+    ]);
   }
 
   @override
@@ -18,6 +25,7 @@ class _AddedNewEventList extends State<AddedNewEventList> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
+            getEmpty(),
             AddedNewEvent(),
             AddedNewEvent(),
             AddedNewEvent(),
