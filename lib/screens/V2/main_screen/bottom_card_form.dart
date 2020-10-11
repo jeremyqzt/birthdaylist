@@ -69,7 +69,7 @@ class _BottomCardForm extends State<BottomCardForm> {
             ]),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 30.0, right: 30.0),
+            padding: const EdgeInsets.only(left: 30.0, right: 30.0, top: 10.0),
             child: new Row(children: [
               Padding(
                 padding: const EdgeInsets.only(right: 10.0),
@@ -98,30 +98,46 @@ class _BottomCardForm extends State<BottomCardForm> {
                   }).toList(),
                 ),
               ),
-              IconButton(
-                icon: Icon(pickedDateType),
-                onPressed: () => {
-                  if (pickedDateType == Feather.moon)
-                    {
-                      setState(() {
-                        pickedDateType = Feather.sun;
-                      })
-                    }
-                  else
-                    {
-                      setState(() {
-                        pickedDateType = Feather.moon;
-                      })
-                    }
-                },
-              ),
               Expanded(
-                  child: new OutlineButton(
-                onPressed: selectDate,
-                child: new Text(dateVal),
-              )),
+                child: TextFormField(
+                  decoration: const InputDecoration(
+                    hintText: 'Last Name',
+                  ),
+                  validator: (value) {
+                    return null;
+                  },
+                ),
+              ),
             ]),
           ),
+          Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30.0),
+              child: new Row(children: [
+                Expanded(
+                    child: new OutlineButton(
+                  shape: new RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(30.0)),
+                  onPressed: selectDate,
+                  child: new Text(dateVal),
+                )),
+                IconButton(
+                  icon: Icon(pickedDateType),
+                  onPressed: () => {
+                    if (pickedDateType == Feather.moon)
+                      {
+                        setState(() {
+                          pickedDateType = Feather.sun;
+                        })
+                      }
+                    else
+                      {
+                        setState(() {
+                          pickedDateType = Feather.moon;
+                        })
+                      }
+                  },
+                ),
+              ])),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30.0),
             child: RaisedButton(
