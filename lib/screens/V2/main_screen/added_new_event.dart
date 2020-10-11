@@ -5,6 +5,10 @@ class AddedNewEventList extends StatefulWidget {
 }
 
 class _AddedNewEventList extends State<AddedNewEventList> {
+  Widget getEmpty() {
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -37,7 +41,6 @@ class AddedNewEvent extends StatelessWidget {
       ),
       child: Text(
         'Card with circular border',
-        textScaleFactor: 1.2,
       ),
     );
   }

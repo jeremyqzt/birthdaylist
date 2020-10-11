@@ -59,6 +59,7 @@ flutter:
     - assets/images/stars.jpg
     - assets/images/doge.jpg
     - assets/images/island.jpg
+    - assets/images/note.jpg
 
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
