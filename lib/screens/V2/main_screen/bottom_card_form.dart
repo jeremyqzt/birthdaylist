@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../../utils/constants.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import './added_new_event.dart';
 
 class BottomCardForm extends StatefulWidget {
   BottomCardForm({Key key}) : super(key: key);
@@ -67,6 +68,11 @@ class _BottomCardForm extends State<BottomCardForm> {
                 ),
               ),
             ]),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(
+                left: 30.0, right: 30.0, top: 10.0, bottom: 10.0),
+            child: AddedNewEventList(),
           ),
           Padding(
             padding: const EdgeInsets.only(
@@ -149,12 +155,13 @@ class _BottomCardForm extends State<BottomCardForm> {
                 shape: new RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(30.0)),
                 color: Colors.blue,
-              onPressed: () {
-                print("Hello");
-              },
+                onPressed: () {
+                  print("Hello");
+                },
                 child: Text('Add Event'),
+              ),
             ),
-            ),),
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30.0),
             child: RaisedButton(
