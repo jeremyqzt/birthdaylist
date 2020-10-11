@@ -141,6 +141,20 @@ class _BottomCardForm extends State<BottomCardForm> {
                   },
                 ),
               ])),
+          Align(
+            alignment: Alignment.centerRight,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30.0),
+              child: MaterialButton(
+                shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(30.0)),
+                color: Colors.blue,
+              onPressed: () {
+                print("Hello");
+              },
+                child: Text('Add Event'),
+            ),
+            ),),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30.0),
             child: RaisedButton(
