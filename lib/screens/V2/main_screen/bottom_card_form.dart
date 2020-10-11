@@ -69,39 +69,42 @@ class _BottomCardForm extends State<BottomCardForm> {
             ]),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 30.0, right: 30.0, top: 10.0),
+            padding: const EdgeInsets.only(
+                left: 30.0, right: 30.0, top: 10.0, bottom: 10.0),
             child: new Row(children: [
-              Padding(
-                padding: const EdgeInsets.only(right: 10.0),
-                child: DropdownButton<String>(
-                  dropdownColor: Colors.white,
-                  value: dropdownValue,
-                  icon: Icon(Icons.arrow_downward),
-                  iconSize: 24,
-                  elevation: 16,
-                  style: TextStyle(color: Colors.black),
-                  underline: Container(
-                    height: 1,
-                    color: Colors.blue,
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 10.0),
+                  child: new Theme(
+                    data: Theme.of(context).copyWith(
+                      canvasColor: Colors.white,
+                    ),
+                    child: DropdownButtonFormField<String>(
+                      value: dropdownValue,
+                      icon: Icon(Icons.arrow_downward),
+                      iconSize: 24,
+                      elevation: 16,
+                      style: TextStyle(color: Colors.black),
+                      onChanged: (String newValue) {
+                        setState(() {
+                          dropdownValue = newValue;
+                        });
+                      },
+                      items: constantSpecialDayStrings
+                          .map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                    ),
                   ),
-                  onChanged: (String newValue) {
-                    setState(() {
-                      dropdownValue = newValue;
-                    });
-                  },
-                  items: constantSpecialDayStrings
-                      .map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
                 ),
               ),
               Expanded(
                 child: TextFormField(
                   decoration: const InputDecoration(
-                    hintText: 'Last Name',
+                    hintText: 'Event Description',
                   ),
                   validator: (value) {
                     return null;
