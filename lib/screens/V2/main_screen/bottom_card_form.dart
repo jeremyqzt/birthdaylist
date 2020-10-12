@@ -13,9 +13,9 @@ class BottomCardForm extends StatefulWidget {
 
 class _BottomCardForm extends State<BottomCardForm> {
   final _formKey = GlobalKey<FormState>();
-  String dropdownValue = constantSpecialDayStrings[0];
+  singleEvent dropdownValue = constantSpecialDayStrings[0];
   String dateVal = 'Select A Date';
-  IconData pickedDateType = Feather.moon;
+  dateType pickedDateType = dateType(DateTypes.SOLAR);
   bool isLunar = false;
   final DateFormat formatter = DateFormat.yMMMMd('en_US');
 
@@ -85,22 +85,24 @@ class _BottomCardForm extends State<BottomCardForm> {
                     data: Theme.of(context).copyWith(
                       canvasColor: Colors.white,
                     ),
-                    child: DropdownButtonFormField<String>(
+                    child: DropdownButtonFormField<singleEvent>(
                       value: dropdownValue,
                       icon: Icon(Icons.arrow_downward),
                       iconSize: 24,
                       elevation: 16,
                       style: TextStyle(color: Colors.black),
-                      onChanged: (String newValue) {
+                      onChanged: (singleEvent newValue) {
+                        print(newValue);
                         setState(() {
                           dropdownValue = newValue;
                         });
                       },
                       items: constantSpecialDayStrings
-                          .map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
+                          .map<DropdownMenuItem<singleEvent>>(
+                              (singleEvent entry) {
+                        return DropdownMenuItem<singleEvent>(
+                          value: entry,
+                          child: Text(entry.toString()),
                         );
                       }).toList(),
                     ),
@@ -130,20 +132,11 @@ class _BottomCardForm extends State<BottomCardForm> {
                   child: new Text(dateVal),
                 )),
                 IconButton(
-                  icon: Icon(pickedDateType),
+                  icon: Icon(pickedDateType.getIcon()),
                   onPressed: () => {
-                    if (pickedDateType == Feather.moon)
-                      {
-                        setState(() {
-                          pickedDateType = Feather.sun;
-                        })
-                      }
-                    else
-                      {
-                        setState(() {
-                          pickedDateType = Feather.moon;
-                        })
-                      }
+                    setState(() {
+                      pickedDateType = pickedDateType.getOtherType();
+                    })
                   },
                 ),
               ])),

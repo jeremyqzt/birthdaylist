@@ -1,3 +1,35 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_icons/flutter_icons.dart';
+
+class singleEvent {
+  final SpecialDays value;
+
+  singleEvent(this.value);
+
+  int toIndex() => this.value.index;
+
+  String toString() => EventMap[this.value];
+}
+
+class dateType {
+  DateTypes type;
+
+  dateType(this.type);
+
+  IconData getIcon() {
+    return (this.type == DateTypes.LUNAR) ? Feather.moon : Feather.sun;
+  }
+
+  setType(DateTypes newType) {
+    this.type = newType;
+  }
+
+  dateType getOtherType() {
+    return dateType(
+        (this.type == DateTypes.LUNAR) ? DateTypes.SOLAR : DateTypes.LUNAR);
+  }
+}
+
 enum SpecialDays {
   NOTHING,
   BIRTHDAY,
@@ -37,12 +69,12 @@ Map<SpecialDays, String> EventIcon = {
   SpecialDays.INVALID: "🛑",
 };
 
-List<String> constantSpecialDayStrings = [
-  EventMap[SpecialDays.BIRTHDAY],
-  EventMap[SpecialDays.ANNIVERSARY],
-  EventMap[SpecialDays.FIRSTOF],
-  EventMap[SpecialDays.ROUTINE],
-  EventMap[SpecialDays.HOLIDAY],
-  EventMap[SpecialDays.OTHER],
-  EventMap[SpecialDays.NOTHING],
+List<singleEvent> constantSpecialDayStrings = [
+  singleEvent(SpecialDays.BIRTHDAY),
+  singleEvent(SpecialDays.ANNIVERSARY),
+  singleEvent(SpecialDays.FIRSTOF),
+  singleEvent(SpecialDays.ROUTINE),
+  singleEvent(SpecialDays.HOLIDAY),
+  singleEvent(SpecialDays.OTHER),
+  singleEvent(SpecialDays.NOTHING),
 ];
