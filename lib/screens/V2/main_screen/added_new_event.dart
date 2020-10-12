@@ -53,7 +53,6 @@ class _AddedNewEventList extends State<AddedNewEventList> {
     } else {
       toRender = [...this.eventList];
     }
-    print(toRender);
     return Container(
       height: 150,
       width: MediaQuery.of(context).size.width - 60,
@@ -65,15 +64,6 @@ class _AddedNewEventList extends State<AddedNewEventList> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               ...toRender,
-              //getEmpty(),
-              /*AddedNewEvent(
-                  "Oct-10-2020", SpecialDays.BIRTHDAY, DateTypes.SOLAR),
-              AddedNewEvent(
-                  "Oct-10-2020", SpecialDays.ANNIVERSARY, DateTypes.LUNAR),
-              AddedNewEvent(
-                  "Oct-10-2020", SpecialDays.HOLIDAY, DateTypes.SOLAR),
-              AddedNewEvent(
-                  "Oct-10-2020", SpecialDays.ROUTINE, DateTypes.LUNAR),*/
             ],
           ),
         ),
@@ -83,11 +73,12 @@ class _AddedNewEventList extends State<AddedNewEventList> {
 }
 
 class AddedNewEvent extends StatelessWidget {
+  final int idx;
   final String date;
   final SpecialDays type;
   final DateTypes dateType;
 
-  AddedNewEvent(this.date, this.type, this.dateType);
+  AddedNewEvent(this.date, this.type, this.dateType, this.idx);
 
   String getEventDescription() {
     String symbol = (dateType == DateTypes.LUNAR) ? "🌙" : "☀";

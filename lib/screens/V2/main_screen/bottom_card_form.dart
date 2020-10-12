@@ -152,8 +152,8 @@ class _BottomCardForm extends State<BottomCardForm> {
                   print(pickedDateType);
                   print(dropdownValue);
                   print(dateVal);
-                  savedDates.add(new AddedNewEvent(
-                      dateVal, dropdownValue.value, pickedDateType.type));
+                  savedDates.add(new AddedNewEvent(dateVal, dropdownValue.value,
+                      pickedDateType.type, savedDates.length - 1));
                   setState(() {
                     savedDates = savedDates;
                   });
