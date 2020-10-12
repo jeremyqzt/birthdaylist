@@ -13,7 +13,22 @@ class _AddedNewEventList extends State<AddedNewEventList> {
         fit: BoxFit.fill,
       ),
       Expanded(
-        child: Text("Add some Events!"),
+        child: new Column(children: [
+          Text(
+            "📝 All Empty Here",
+            style: TextStyle(
+              fontWeight: FontWeight.w700,
+              fontSize: 18,
+            ),
+          ),
+          Text(
+            "Create new events below",
+            style: TextStyle(
+              fontWeight: FontWeight.w300,
+              fontSize: 14,
+            ),
+          ),
+        ]),
       )
     ]);
   }
