@@ -3,11 +3,19 @@ import 'package:flutter/material.dart';
 import '../../../utils/constants.dart';
 
 class AddedNewEventList extends StatefulWidget {
-  _AddedNewEventList createState() => _AddedNewEventList();
+  List<AddedNewEvent> eventList;
+
+  AddedNewEventList(this.eventList);
+
+  _AddedNewEventList createState() => _AddedNewEventList(this.eventList);
 }
 
 class _AddedNewEventList extends State<AddedNewEventList> {
   final _scrollController = ScrollController();
+
+  List<AddedNewEvent> eventList;
+
+  _AddedNewEventList(this.eventList);
 
   Widget getEmpty() {
     return Row(children: [
@@ -39,6 +47,13 @@ class _AddedNewEventList extends State<AddedNewEventList> {
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> toRender;
+    if (this.eventList.length == 0) {
+      toRender = [getEmpty()];
+    } else {
+      toRender = [...this.eventList];
+    }
+    print(toRender);
     return Container(
       height: 150,
       width: MediaQuery.of(context).size.width - 60,
@@ -49,15 +64,16 @@ class _AddedNewEventList extends State<AddedNewEventList> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              getEmpty(),
-              AddedNewEvent(
+              ...toRender,
+              //getEmpty(),
+              /*AddedNewEvent(
                   "Oct-10-2020", SpecialDays.BIRTHDAY, DateTypes.SOLAR),
               AddedNewEvent(
                   "Oct-10-2020", SpecialDays.ANNIVERSARY, DateTypes.LUNAR),
               AddedNewEvent(
                   "Oct-10-2020", SpecialDays.HOLIDAY, DateTypes.SOLAR),
               AddedNewEvent(
-                  "Oct-10-2020", SpecialDays.ROUTINE, DateTypes.LUNAR),
+                  "Oct-10-2020", SpecialDays.ROUTINE, DateTypes.LUNAR),*/
             ],
           ),
         ),
