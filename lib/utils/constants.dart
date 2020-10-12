@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:flutter/material.dart';
 
 class singleEvent {
   final SpecialDays value;
@@ -27,6 +28,12 @@ class dateType {
   dateType getOtherType() {
     return dateType(
         (this.type == DateTypes.LUNAR) ? DateTypes.SOLAR : DateTypes.LUNAR);
+  }
+
+  Color getColor() {
+    return (this.type == DateTypes.LUNAR)
+        ? Colors.blueGrey
+        : Colors.orangeAccent;
   }
 }
 

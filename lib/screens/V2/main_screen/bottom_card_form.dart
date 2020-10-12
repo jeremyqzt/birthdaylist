@@ -15,6 +15,7 @@ class _BottomCardForm extends State<BottomCardForm> {
   singleEvent dropdownValue = constantSpecialDayStrings[0];
   String dateVal = 'Select A Date';
   dateType pickedDateType = dateType(DateTypes.SOLAR);
+  Color iconColor = Colors.orangeAccent;
   bool isLunar = false;
   final DateFormat formatter = DateFormat.yMMMMd('en_US');
   int dismissIdx;
@@ -134,45 +135,66 @@ class _BottomCardForm extends State<BottomCardForm> {
             ]),
           ),
           Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30.0),
-              child: new Row(children: [
-                Expanded(
-                    child: new OutlineButton(
-                  shape: new RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(30.0)),
-                  onPressed: selectDate,
-                  child: new Text(dateVal),
-                )),
+            padding: const EdgeInsets.symmetric(horizontal: 30.0),
+            child: new Row(
+              children: [
                 IconButton(
+                  color: iconColor,
                   icon: Icon(pickedDateType.getIcon()),
-                  onPressed: () => {
+                  onPressed: () {
+                    dateType otherType = pickedDateType.getOtherType();
                     setState(() {
-                      pickedDateType = pickedDateType.getOtherType();
-                    })
+                      iconColor = otherType.getColor();
+                      pickedDateType = otherType;
+                    });
                   },
                 ),
-              ])),
-          Align(
-            alignment: Alignment.centerRight,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30.0),
-              child: MaterialButton(
-                shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(30.0)),
-                color: Colors.blue,
-                onPressed: () {
-                  savedDates.add(new SingledAddedEvent(
+                Expanded(
+                  child: new MaterialButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                        side: BorderSide(color: Colors.black)),
+                    onPressed: selectDate,
+                    child: new Text(
                       dateVal,
-                      dropdownValue.value,
-                      pickedDateType.type, dismissIdx, onDismiss));
-                  dismissIdx++;
+                      style: TextStyle(
+                        fontSize: 12.0,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 10),
+                  child: MaterialButton(
+                    shape: new RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(30.0)),
+                    color: Colors.blue,
+                    onPressed: () {
+                      savedDates.add(new SingledAddedEvent(
+                          dateVal,
+                          dropdownValue.value,
+                          pickedDateType.type,
+                          dismissIdx,
+                          onDismiss));
+                      dismissIdx++;
 
-                  setState(() {
-                    savedDates = savedDates;
-                  });
-                },
-                child: Text('Add Event'),
-              ),
+                      setState(() {
+                        savedDates = savedDates;
+                      });
+                    },
+                    child: Text(
+                      'Add Event',
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
           Padding(

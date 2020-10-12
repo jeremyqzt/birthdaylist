@@ -133,7 +133,7 @@ class AddedNewEvent extends StatelessWidget {
                   'Delete',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 18.0,
+                    fontSize: 15.0,
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
