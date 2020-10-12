@@ -26,6 +26,17 @@ Map<SpecialDays, String> EventMap = {
   SpecialDays.INVALID: "??? (Opps, we have an error here)",
 };
 
+Map<SpecialDays, String> EventIcon = {
+  SpecialDays.BIRTHDAY: "🍰",
+  SpecialDays.ANNIVERSARY: "💌",
+  SpecialDays.FIRSTOF: "📅",
+  SpecialDays.ROUTINE: "🔁",
+  SpecialDays.HOLIDAY: "🧨",
+  SpecialDays.OTHER: "🎁",
+  SpecialDays.NOTHING: "🎀",
+  SpecialDays.INVALID: "🛑",
+};
+
 List<String> constantSpecialDayStrings = [
   EventMap[SpecialDays.BIRTHDAY],
   EventMap[SpecialDays.ANNIVERSARY],

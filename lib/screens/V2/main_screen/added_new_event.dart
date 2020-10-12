@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AddedNewEventList extends StatefulWidget {
@@ -58,15 +59,17 @@ class AddedNewEvent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: StadiumBorder(
-        side: BorderSide(
-          color: Colors.black,
-          width: 0.5,
+        shape: StadiumBorder(
+          side: BorderSide(
+            color: Colors.black,
+            width: 0.5,
+          ),
         ),
-      ),
-      child: Text(
-        'Card with circular border',
-      ),
-    );
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+          child: Text(
+            'Card with circular border',
+          ),
+        ));
   }
 }
