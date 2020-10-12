@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../utils/constants.dart';
 
 class AddedNewEventList extends StatefulWidget {
-  List<Widget> eventList;
+  List<SingledAddedEvent> eventList;
 
   AddedNewEventList(this.eventList);
 
@@ -13,9 +13,24 @@ class AddedNewEventList extends StatefulWidget {
 class _AddedNewEventList extends State<AddedNewEventList> {
   final _scrollController = ScrollController();
 
-  List<Widget> eventList;
+  List<SingledAddedEvent> eventDataList;
+  List<AddedNewEvent> eventList = [];
 
-  _AddedNewEventList(this.eventList);
+  _AddedNewEventList(this.eventDataList) {
+    this.buildEventList();
+  }
+
+  buildEventList() {
+    this.eventList = [];
+    for (int i = 0; i < this.eventDataList.length; i++) {
+      this.eventList.add(new AddedNewEvent(
+          this.eventDataList[i].date,
+          this.eventDataList[i].type,
+          this.eventDataList[i].dateType,
+          this.eventDataList[i].idx,
+          this.eventDataList[i].dismissCallback));
+    }
+  }
 
   Widget getEmpty() {
     return Row(children: [
@@ -48,12 +63,12 @@ class _AddedNewEventList extends State<AddedNewEventList> {
   @override
   Widget build(BuildContext context) {
     List<Widget> toRender;
+    this.buildEventList();
     if (this.eventList.length == 0) {
       toRender = [getEmpty()];
     } else {
       toRender = [...this.eventList];
     }
-    print(toRender);
     return Container(
       height: 150,
       width: MediaQuery.of(context).size.width - 60,
@@ -71,6 +86,17 @@ class _AddedNewEventList extends State<AddedNewEventList> {
       ),
     );
   }
+}
+
+class SingledAddedEvent {
+  final int idx;
+  final String date;
+  final SpecialDays type;
+  final DateTypes dateType;
+  final void Function(int idx) dismissCallback;
+
+  SingledAddedEvent(
+      this.date, this.type, this.dateType, this.idx, this.dismissCallback);
 }
 
 class AddedNewEvent extends StatelessWidget {
@@ -92,25 +118,43 @@ class AddedNewEvent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Dismissible(
-        dismissThresholds: {
-          DismissDirection.startToEnd: 0.3,
+    return new Container(
+        child: new Dismissible(
+            dismissThresholds: {
+              DismissDirection.startToEnd: 0.7,
           DismissDirection.endToStart: 0.7
         },
-        background: Container(color: Colors.red),
-        onDismissed: (direction) {
-          this.dismissCallback(this.idx);
-        },
-        key: Key("${this.idx}"),
-        child: Card(
-            shape: BeveledRectangleBorder(
-              borderRadius: BorderRadius.circular(1.0),
-            ),
-            child: Padding(
-              padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-              child: Text(
-                this.getEventDescription(),
+            background: Container(
+              width: double.infinity,
+              color: Colors.red,
+              child: Align(
+                alignment: Alignment.center,
+                child: Text(
+                  'Delete',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
-            )));
+            ),
+            onDismissed: (direction) {
+              this.dismissCallback(this.idx);
+            },
+            key: Key("${this.idx}"),
+            child: Container(
+                width: double.infinity,
+                child: Card(
+                    shape: BeveledRectangleBorder(
+                      borderRadius: BorderRadius.circular(1.0),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                      child: Text(
+                        this.getEventDescription(),
+                      ),
+                    )))));
   }
 }

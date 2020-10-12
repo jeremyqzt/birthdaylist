@@ -18,13 +18,11 @@ class _BottomCardForm extends State<BottomCardForm> {
   bool isLunar = false;
   final DateFormat formatter = DateFormat.yMMMMd('en_US');
   int dismissIdx;
-  List<Widget> savedDates;
-  List<int> savedDatesIdx;
+  List<SingledAddedEvent> savedDates;
 
   _BottomCardForm() {
     this.dismissIdx = 0;
     savedDates = [];
-    savedDatesIdx = [];
   }
 
   Future selectDate() async {
@@ -41,10 +39,7 @@ class _BottomCardForm extends State<BottomCardForm> {
   }
 
   onDismiss(int idx) {
-    savedDatesIdx.removeWhere((item) => item == idx);
-    for (int i = 0; i < savedDatesIdx.length; i++) {}
-    //savedDates.removeWhere((item) => item.getIdx() == '001');
-
+    savedDates.removeWhere((element) => element.idx == idx);
     setState(() {
       savedDates = savedDates;
     });
@@ -110,7 +105,6 @@ class _BottomCardForm extends State<BottomCardForm> {
                       elevation: 16,
                       style: TextStyle(color: Colors.black),
                       onChanged: (singleEvent newValue) {
-                        print(newValue);
                         setState(() {
                           dropdownValue = newValue;
                         });
@@ -167,10 +161,12 @@ class _BottomCardForm extends State<BottomCardForm> {
                     borderRadius: new BorderRadius.circular(30.0)),
                 color: Colors.blue,
                 onPressed: () {
-                  savedDates.add(new AddedNewEvent(dateVal, dropdownValue.value,
+                  savedDates.add(new SingledAddedEvent(
+                      dateVal,
+                      dropdownValue.value,
                       pickedDateType.type, dismissIdx, onDismiss));
-                  savedDatesIdx.add(dismissIdx);
                   dismissIdx++;
+
                   setState(() {
                     savedDates = savedDates;
                   });
