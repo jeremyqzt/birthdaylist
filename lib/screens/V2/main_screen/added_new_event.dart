@@ -53,6 +53,7 @@ class _AddedNewEventList extends State<AddedNewEventList> {
     } else {
       toRender = [...this.eventList];
     }
+    print(toRender);
     return Container(
       height: 150,
       width: MediaQuery.of(context).size.width - 60,
@@ -77,8 +78,12 @@ class AddedNewEvent extends StatelessWidget {
   final String date;
   final SpecialDays type;
   final DateTypes dateType;
+  final void Function(int idx) dismissCallback;
 
-  AddedNewEvent(this.date, this.type, this.dateType, this.idx);
+  AddedNewEvent(
+      this.date, this.type, this.dateType, this.idx, this.dismissCallback);
+
+  getIdx() => this.idx;
 
   String getEventDescription() {
     String symbol = (dateType == DateTypes.LUNAR) ? "🌙" : "☀";
@@ -87,18 +92,25 @@ class AddedNewEvent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-        shape: StadiumBorder(
-          side: BorderSide(
-            color: Colors.black,
-            width: 0.1,
-          ),
-        ),
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-          child: Text(
-            this.getEventDescription(),
-          ),
-        ));
+    return new Dismissible(
+        dismissThresholds: {
+          DismissDirection.startToEnd: 0.3,
+          DismissDirection.endToStart: 0.7
+        },
+        background: Container(color: Colors.red),
+        onDismissed: (direction) {
+          this.dismissCallback(this.idx);
+        },
+        key: Key("${this.idx}"),
+        child: Card(
+            shape: BeveledRectangleBorder(
+              borderRadius: BorderRadius.circular(1.0),
+            ),
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+              child: Text(
+                this.getEventDescription(),
+              ),
+            )));
   }
 }

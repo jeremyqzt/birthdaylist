@@ -17,7 +17,15 @@ class _BottomCardForm extends State<BottomCardForm> {
   dateType pickedDateType = dateType(DateTypes.SOLAR);
   bool isLunar = false;
   final DateFormat formatter = DateFormat.yMMMMd('en_US');
-  List<Widget> savedDates = [];
+  int dismissIdx;
+  List<Widget> savedDates;
+  List<int> savedDatesIdx;
+
+  _BottomCardForm() {
+    this.dismissIdx = 0;
+    savedDates = [];
+    savedDatesIdx = [];
+  }
 
   Future selectDate() async {
     DateTime picked = await showDatePicker(
@@ -30,6 +38,16 @@ class _BottomCardForm extends State<BottomCardForm> {
       confirmText: 'Select',
     );
     if (picked != null) setState(() => dateVal = formatter.format(picked));
+  }
+
+  onDismiss(int idx) {
+    savedDatesIdx.removeWhere((item) => item == idx);
+    for (int i = 0; i < savedDatesIdx.length; i++) {}
+    //savedDates.removeWhere((item) => item.getIdx() == '001');
+
+    setState(() {
+      savedDates = savedDates;
+    });
   }
 
   @override
@@ -149,11 +167,10 @@ class _BottomCardForm extends State<BottomCardForm> {
                     borderRadius: new BorderRadius.circular(30.0)),
                 color: Colors.blue,
                 onPressed: () {
-                  print(pickedDateType);
-                  print(dropdownValue);
-                  print(dateVal);
                   savedDates.add(new AddedNewEvent(dateVal, dropdownValue.value,
-                      pickedDateType.type, savedDates.length - 1));
+                      pickedDateType.type, dismissIdx, onDismiss));
+                  savedDatesIdx.add(dismissIdx);
+                  dismissIdx++;
                   setState(() {
                     savedDates = savedDates;
                   });
