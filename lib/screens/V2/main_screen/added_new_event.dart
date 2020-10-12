@@ -7,6 +7,8 @@ class AddedNewEventList extends StatefulWidget {
 }
 
 class _AddedNewEventList extends State<AddedNewEventList> {
+  final _scrollController = ScrollController();
+
   Widget getEmpty() {
     return Row(children: [
       Image.asset(
@@ -40,17 +42,24 @@ class _AddedNewEventList extends State<AddedNewEventList> {
     return Container(
       height: 150,
       width: MediaQuery.of(context).size.width - 60,
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            getEmpty(),
-            AddedNewEvent("Oct-10-2020", SpecialDays.BIRTHDAY, DateTypes.SOLAR),
-            AddedNewEvent(
-                "Oct-10-2020", SpecialDays.ANNIVERSARY, DateTypes.LUNAR),
-            AddedNewEvent("Oct-10-2020", SpecialDays.HOLIDAY, DateTypes.SOLAR),
-            AddedNewEvent("Oct-10-2020", SpecialDays.ROUTINE, DateTypes.LUNAR),
-          ],
+      child: Scrollbar(
+        controller: _scrollController,
+        child: SingleChildScrollView(
+          controller: _scrollController,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              getEmpty(),
+              AddedNewEvent(
+                  "Oct-10-2020", SpecialDays.BIRTHDAY, DateTypes.SOLAR),
+              AddedNewEvent(
+                  "Oct-10-2020", SpecialDays.ANNIVERSARY, DateTypes.LUNAR),
+              AddedNewEvent(
+                  "Oct-10-2020", SpecialDays.HOLIDAY, DateTypes.SOLAR),
+              AddedNewEvent(
+                  "Oct-10-2020", SpecialDays.ROUTINE, DateTypes.LUNAR),
+            ],
+          ),
         ),
       ),
     );
@@ -65,7 +74,7 @@ class AddedNewEvent extends StatelessWidget {
   AddedNewEvent(this.date, this.type, this.dateType);
 
   String getEventDescription() {
-    String symbol = (dateType == DateTypes.LUNAR) ? "🌑" : "☀";
+    String symbol = (dateType == DateTypes.LUNAR) ? "🌙" : "☀";
     return '${EventIcon[type]} ${EventMap[type]} on ${symbol} ${this.date}';
   }
 
