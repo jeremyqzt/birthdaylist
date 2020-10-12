@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../utils/constants.dart';
 
 class AddedNewEventList extends StatefulWidget {
-  List<AddedNewEvent> eventList;
+  List<Widget> eventList;
 
   AddedNewEventList(this.eventList);
 
@@ -13,7 +13,7 @@ class AddedNewEventList extends StatefulWidget {
 class _AddedNewEventList extends State<AddedNewEventList> {
   final _scrollController = ScrollController();
 
-  List<AddedNewEvent> eventList;
+  List<Widget> eventList;
 
   _AddedNewEventList(this.eventList);
 

@@ -17,6 +17,7 @@ class _BottomCardForm extends State<BottomCardForm> {
   dateType pickedDateType = dateType(DateTypes.SOLAR);
   bool isLunar = false;
   final DateFormat formatter = DateFormat.yMMMMd('en_US');
+  List<Widget> savedDates = [];
 
   Future selectDate() async {
     DateTime picked = await showDatePicker(
@@ -71,7 +72,7 @@ class _BottomCardForm extends State<BottomCardForm> {
           Padding(
             padding: const EdgeInsets.only(
                 left: 30.0, right: 30.0, top: 10.0, bottom: 10.0),
-            child: AddedNewEventList([]),
+            child: AddedNewEventList(savedDates),
           ),
           Padding(
             padding: const EdgeInsets.only(
@@ -148,7 +149,14 @@ class _BottomCardForm extends State<BottomCardForm> {
                     borderRadius: new BorderRadius.circular(30.0)),
                 color: Colors.blue,
                 onPressed: () {
-                  print("Hello");
+                  print(pickedDateType);
+                  print(dropdownValue);
+                  print(dateVal);
+                  savedDates.add(new AddedNewEvent(
+                      dateVal, dropdownValue.value, pickedDateType.type));
+                  setState(() {
+                    savedDates = savedDates;
+                  });
                 },
                 child: Text('Add Event'),
               ),
