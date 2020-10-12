@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../../../utils/constants.dart';
 
 class AddedNewEventList extends StatefulWidget {
   _AddedNewEventList createState() => _AddedNewEventList();
@@ -10,7 +11,7 @@ class _AddedNewEventList extends State<AddedNewEventList> {
     return Row(children: [
       Image.asset(
         "assets/images/note2.jpg",
-        height: 100,
+        height: 150,
         fit: BoxFit.fill,
       ),
       Expanded(
@@ -37,17 +38,18 @@ class _AddedNewEventList extends State<AddedNewEventList> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      height: 150,
       width: MediaQuery.of(context).size.width - 60,
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             getEmpty(),
-            AddedNewEvent(),
-            AddedNewEvent(),
-            AddedNewEvent(),
-            AddedNewEvent(),
+            AddedNewEvent("Oct-10-2020", SpecialDays.BIRTHDAY, DateTypes.SOLAR),
+            AddedNewEvent(
+                "Oct-10-2020", SpecialDays.ANNIVERSARY, DateTypes.LUNAR),
+            AddedNewEvent("Oct-10-2020", SpecialDays.HOLIDAY, DateTypes.SOLAR),
+            AddedNewEvent("Oct-10-2020", SpecialDays.ROUTINE, DateTypes.LUNAR),
           ],
         ),
       ),
@@ -56,19 +58,30 @@ class _AddedNewEventList extends State<AddedNewEventList> {
 }
 
 class AddedNewEvent extends StatelessWidget {
+  final String date;
+  final SpecialDays type;
+  final DateTypes dateType;
+
+  AddedNewEvent(this.date, this.type, this.dateType);
+
+  String getEventDescription() {
+    String symbol = (dateType == DateTypes.LUNAR) ? "🌑" : "☀";
+    return '${EventIcon[type]} ${EventMap[type]} on ${symbol} ${this.date}';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
         shape: StadiumBorder(
           side: BorderSide(
             color: Colors.black,
-            width: 0.5,
+            width: 0.1,
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+          padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
           child: Text(
-            'Card with circular border',
+            this.getEventDescription(),
           ),
         ));
   }
