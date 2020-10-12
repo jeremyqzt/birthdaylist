@@ -12,7 +12,9 @@ class _AddedNewEventList extends State<AddedNewEventList> {
         height: 100,
         fit: BoxFit.fill,
       ),
-      Text("Add some Evets!")
+      Expanded(
+        child: Text("Add some Events!"),
+      )
     ]);
   }
 
