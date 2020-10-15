@@ -39,11 +39,12 @@ class _AddedNewEventList extends State<AddedNewEventList> {
         height: 150,
         fit: BoxFit.fill,
       ),*/
-          SizedBox(height: 150,),
+      SizedBox(
+        height: 150,
+      ),
       Expanded(
-        child: new Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+        child:
+            new Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Text(
             "📝 All Empty Here",
             style: TextStyle(
@@ -123,42 +124,46 @@ class AddedNewEvent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Container(
-        child: new Dismissible(
-            dismissThresholds: {
-              DismissDirection.startToEnd: 0.7,
+      child: new Dismissible(
+        dismissThresholds: {
+          DismissDirection.startToEnd: 0.7,
           DismissDirection.endToStart: 0.7
         },
-            background: Container(
-              width: double.infinity,
-              color: Colors.red,
-              child: Align(
-                alignment: Alignment.center,
-                child: Text(
-                  'Delete',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 15.0,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+        background: Container(
+          width: double.infinity,
+          color: Colors.red,
+          child: Align(
+            alignment: Alignment.center,
+            child: Text(
+              'Delete',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 15.0,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
               ),
             ),
-            onDismissed: (direction) {
-              this.dismissCallback(this.idx);
-            },
-            key: Key("${this.idx}"),
-            child: Container(
-                width: double.infinity,
-                child: Card(
-                    shape: BeveledRectangleBorder(
-                      borderRadius: BorderRadius.circular(1.0),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-                      child: Text(
-                        this.getEventDescription(),
-                      ),
-                    )))));
+          ),
+        ),
+        onDismissed: (direction) {
+          this.dismissCallback(this.idx);
+        },
+        key: Key("${this.idx}"),
+        child: Container(
+          width: double.infinity,
+          child: Card(
+            shape: BeveledRectangleBorder(
+              borderRadius: BorderRadius.circular(1.0),
+            ),
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+              child: Text(
+                this.getEventDescription(),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

@@ -13,16 +13,18 @@ class BottomCardForm extends StatefulWidget {
 class _BottomCardForm extends State<BottomCardForm> {
   final _formKey = GlobalKey<FormState>();
   singleEvent dropdownValue = constantSpecialDayStrings[0];
-  String dateVal = 'Select A Date';
   dateType pickedDateType = dateType(DateTypes.SOLAR);
   Color iconColor = Colors.orangeAccent;
   bool isLunar = false;
   final DateFormat formatter = DateFormat.yMMMMd('en_US');
+  String dateVal;
+
   int dismissIdx;
   List<SingledAddedEvent> savedDates;
 
   _BottomCardForm() {
     this.dismissIdx = 0;
+    this.dateVal = formatter.format(DateTime.now());
     savedDates = [];
   }
 
