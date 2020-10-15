@@ -33,14 +33,17 @@ class _AddedNewEventList extends State<AddedNewEventList> {
   }
 
   Widget getEmpty() {
-    return Row(children: [
-      Image.asset(
+    return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+      /*Image.asset(
         "assets/images/note2.jpg",
         height: 150,
         fit: BoxFit.fill,
-      ),
+      ),*/
+          SizedBox(height: 150,),
       Expanded(
-        child: new Column(children: [
+        child: new Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
           Text(
             "📝 All Empty Here",
             style: TextStyle(
@@ -77,7 +80,8 @@ class _AddedNewEventList extends State<AddedNewEventList> {
         child: SingleChildScrollView(
           controller: _scrollController,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               ...toRender,
             ],
