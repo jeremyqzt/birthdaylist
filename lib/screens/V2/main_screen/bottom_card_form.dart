@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../../utils/constants.dart';
 import './added_new_event.dart';
+import 'dart:async';
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
 
 class BottomCardForm extends StatefulWidget {
   BottomCardForm({Key key}) : super(key: key);
@@ -18,6 +21,7 @@ class _BottomCardForm extends State<BottomCardForm> {
   bool isLunar = false;
   final DateFormat formatter = DateFormat.yMMMMd('en_US');
   String dateVal;
+  File _image;
 
   int dismissIdx;
   List<SingledAddedEvent> savedDates;
@@ -48,6 +52,15 @@ class _BottomCardForm extends State<BottomCardForm> {
     });
   }
 
+  _imgFromGallery() async {
+    File image = await ImagePicker.pickImage(
+        source: ImageSource.gallery, imageQuality: 50);
+
+    setState(() {
+      _image = image;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -60,6 +73,36 @@ class _BottomCardForm extends State<BottomCardForm> {
             padding: const EdgeInsets.only(
                 left: 30.0, right: 30, top: 30, bottom: 10),
             child: new Row(children: [
+              GestureDetector(
+                onTap: () {
+                  _imgFromGallery();
+                },
+                child: CircleAvatar(
+                  radius: 45,
+                  backgroundColor: Colors.blue,
+                  child: _image != null
+                      ? ClipRRect(
+                          borderRadius: BorderRadius.circular(40),
+                          child: Image.file(
+                            _image,
+                            width: 65,
+                            height: 65,
+                            fit: BoxFit.fitHeight,
+                          ),
+                        )
+                      : Container(
+                          decoration: BoxDecoration(
+                              color: Colors.grey[200],
+                              borderRadius: BorderRadius.circular(50)),
+                          width: 100,
+                          height: 100,
+                          child: Icon(
+                            Icons.camera_alt,
+                            color: Colors.grey[800],
+                          ),
+                        ),
+                ),
+              ),
               Expanded(
                 child: TextFormField(
                   decoration: const InputDecoration(
