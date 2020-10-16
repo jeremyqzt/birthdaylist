@@ -71,18 +71,20 @@ class _BottomCardForm extends State<BottomCardForm> {
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.only(
-                left: 30.0, right: 30, top: 30, bottom: 10),
+                left: 15.0, right: 30, top: 30, bottom: 10),
             child: new Row(children: [
-              GestureDetector(
-                onTap: () {
+              Padding(
+                padding: const EdgeInsets.only(right: 15),
+                child: GestureDetector(
+                  onTap: () {
                   _imgFromGallery();
                 },
                 child: CircleAvatar(
-                  radius: 45,
+                  radius: 35,
                   backgroundColor: Colors.blue,
                   child: _image != null
                       ? ClipRRect(
-                          borderRadius: BorderRadius.circular(40),
+                    borderRadius: BorderRadius.circular(22),
                           child: Image.file(
                             _image,
                             width: 65,
@@ -94,14 +96,15 @@ class _BottomCardForm extends State<BottomCardForm> {
                           decoration: BoxDecoration(
                               color: Colors.grey[200],
                               borderRadius: BorderRadius.circular(50)),
-                          width: 100,
-                          height: 100,
+                    width: 65,
+                    height: 65,
                           child: Icon(
                             Icons.camera_alt,
                             color: Colors.grey[800],
                           ),
                         ),
                 ),
+              ),
               ),
               Expanded(
                 child: TextFormField(
