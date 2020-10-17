@@ -22,6 +22,8 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     this.inMemDb.enumeratePersons();
     this.inMemDb.getMostRecentEventBetweenAllContacts();
+    this.inMemDb.addContact();
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: '/',

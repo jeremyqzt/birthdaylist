@@ -24,6 +24,11 @@ class imDb{
     this.allContacts = this.enumeratePersons();
   }
 
+  void addContact() {
+    print(this.jsonDb[1]);
+    print(this.allContacts);
+  }
+
   List<Person> enumeratePersons(){
     List<Person> ret = [];
     Person item ;
@@ -31,7 +36,6 @@ class imDb{
       item = new Person(this.jsonDb[i]["firstName"], this.jsonDb[i]["lastName"], this.jsonDb[i]["id"], null, this.jsonDb[i]["savedDays"]);
       ret.add(item);
     }
-
     return ret;
   }
 
@@ -70,6 +74,7 @@ class imDb{
   getRawEntries(){
     return this.jsonDb;
   }
+
 
   flushToDisk(){
     FileUtil.writeFile(json.decode(this.jsonDb));

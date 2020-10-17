@@ -10,7 +10,8 @@ class Event {
   bool reminder;
   bool earlyReminder;
   bool autoMessage;
-  Event(this.inJson){
+
+  Event(this.inJson) {
     this.buildInternal();
     this.getThisYearEvent();
   }
@@ -21,12 +22,12 @@ class Event {
     this.eventMessage = this.inJson["messageContent"];
   }
 
-  int getDaysFromToday(){
+  int getDaysFromToday() {
     int ret = 366;
     DateTime thisYear = this.getThisYearEvent();
     DateTime now = DateTime.now();
 
-    if (thisYear != null){
+    if (thisYear != null) {
       ret = thisYear.difference(now).inDays;
     }
     return ret;
@@ -41,20 +42,39 @@ class Event {
     Lunar LunarDay;
     Solar lunarConverted;
     DateTime standard;
-    if (this.dayType == DateTypes.LUNAR.index){
-      LunarDay = Lunar(lunarYear: this.inJson["year"], lunarMonth: this.inJson["month"], lunarDay: this.inJson["day"]);
+    if (this.dayType == DateTypes.LUNAR.index) {
+      LunarDay = Lunar(
+          lunarYear: this.inJson["year"],
+          lunarMonth: this.inJson["month"],
+          lunarDay: this.inJson["day"]);
       lunarConverted = LunarSolarConverter.lunarToSolar(LunarDay);
-      standard = DateTime(currently.year, lunarConverted.solarMonth, lunarConverted.solarDay);
+      standard = DateTime(
+          currently.year, lunarConverted.solarMonth, lunarConverted.solarDay);
     } else {
-      standard = DateTime(currently.year, this.inJson["month"], this.inJson["day"]);
+      standard =
+          DateTime(currently.year, this.inJson["month"], this.inJson["day"]);
     }
 
-    if (currently.isAfter(standard)){
+    if (currently.isAfter(standard)) {
       return null;
     }
     return standard;
   }
 
-  String toString() => "Event Type (${this.eventType}). This Year Occur: ${this.getThisYearEvent()} Msg: ${this.eventMessage}";
+  String toString() =>
+      "Event Type (${this.eventType}). This Year Occur: ${this.getThisYearEvent()} Msg: ${this.eventMessage}";
 
+  Map<String, dynamic> toJson(String first, String last, int id) => {
+        "type": 1,
+        "month": 10,
+        "day": 10,
+        "year": 1990,
+        "dateType": 1,
+        "yearInputed": true,
+        "reminderDay": true,
+        "reminderprior": true,
+        "automessage": true,
+        "messageContent": "Lorem Ipsum",
+        "title": "None"
+      };
 }

@@ -13,7 +13,6 @@ class Person {
     this.id = id;
     this.relationshop = rel;
     this.events = buildEvents(events);
-    //this.getMostSoonEvents();
   }
 
   List<Event> buildEvents(dynamic inJson){
@@ -27,6 +26,13 @@ class Person {
 
     return ret;
   }
+
+  Map<String, dynamic> toJson(String first, String last, int id) => {
+        "firstName": first,
+        "lastName": last,
+        "id": id,
+        "savedDays": [],
+      };
 
   List<Event> getMostSoonEvents(){
     int diff;
