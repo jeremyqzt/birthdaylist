@@ -133,7 +133,7 @@ class _BottomCardForm extends State<BottomCardForm> {
           ),
           Padding(
             padding: const EdgeInsets.only(
-                left: 30.0, right: 30.0, top: 10.0, bottom: 10.0),
+                left: 30.0, right: 30.0, top: 5.0, bottom: 5.0),
             child: AddedNewEventList(savedDates),
           ),
           Padding(

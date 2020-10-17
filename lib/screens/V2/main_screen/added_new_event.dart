@@ -40,7 +40,7 @@ class _AddedNewEventList extends State<AddedNewEventList> {
         fit: BoxFit.fill,
       ),*/
       SizedBox(
-        height: 150,
+        height: 120,
       ),
       Expanded(
         child:
@@ -74,7 +74,7 @@ class _AddedNewEventList extends State<AddedNewEventList> {
       toRender = [...this.eventList];
     }
     return Container(
-      height: 150,
+      height: 120,
       width: MediaQuery.of(context).size.width - 60,
       child: Scrollbar(
         controller: _scrollController,
