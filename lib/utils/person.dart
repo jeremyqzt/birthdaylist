@@ -28,10 +28,10 @@ class Person {
   }
 
   Map<String, dynamic> toJson(String first, String last, int id) => {
-        "firstName": first,
-        "lastName": last,
-        "id": id,
-        "savedDays": [],
+        "firstName": this.firstName,
+        "lastName": this.lastName,
+        "id": this.id,
+        "savedDays": [...this.events.map((item) => item.toJson)],
       };
 
   List<Event> getMostSoonEvents(){
