@@ -65,11 +65,11 @@ class Event {
       "Event Type (${this.eventType}). This Year Occur: ${this.getThisYearEvent()} Msg: ${this.eventMessage}";
 
   Map<String, dynamic> toJson(String first, String last, int id) => {
-        "type": 1,
-        "month": 10,
-        "day": 10,
-        "year": 1990,
-        "dateType": 1,
+        "type": this.eventType,
+        "month": this.month,
+        "day": this.day,
+        "year": this.year,
+        "dateType": this.dayType,
         "yearInputed": true,
         "reminderDay": true,
         "reminderprior": true,
