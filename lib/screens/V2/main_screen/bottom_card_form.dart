@@ -113,7 +113,7 @@ class _BottomCardForm extends State<BottomCardForm> {
                   ),
                   validator: (value) {
                     if (value.isEmpty) {
-                      return 'Please enter a first name';
+                      return 'Field cannot be empty';
                     }
                     return null;
                   },
@@ -125,6 +125,9 @@ class _BottomCardForm extends State<BottomCardForm> {
                     hintText: 'Last Name',
                   ),
                   validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Field cannot be empty';
+                    }
                     return null;
                   },
                 ),

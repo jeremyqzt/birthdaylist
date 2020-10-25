@@ -34,11 +34,6 @@ class _AddedNewEventList extends State<AddedNewEventList> {
 
   Widget getEmpty() {
     return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-      /*Image.asset(
-        "assets/images/note2.jpg",
-        height: 150,
-        fit: BoxFit.fill,
-      ),*/
       SizedBox(
         height: 120,
       ),
@@ -74,9 +69,10 @@ class _AddedNewEventList extends State<AddedNewEventList> {
       toRender = [...this.eventList];
     }
     return Container(
-      height: 120,
+      height: 135,
       width: MediaQuery.of(context).size.width - 60,
-      child: Scrollbar(
+      child: CupertinoScrollbar(
+        isAlwaysShown: (this.eventList.length != 0),
         controller: _scrollController,
         child: SingleChildScrollView(
           controller: _scrollController,
