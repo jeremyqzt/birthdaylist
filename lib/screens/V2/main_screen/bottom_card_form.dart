@@ -247,14 +247,22 @@ class _BottomCardForm extends State<BottomCardForm> {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30.0),
-            child: RaisedButton(
-              onPressed: () {
+            child: Row(children: [
+              RaisedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text('Cancel'),
+              ),
+              RaisedButton(
+                onPressed: () {
                 if (_formKey.currentState.validate()) {
                   // Process data.
                 }
               },
               child: Text('Save Contact'),
             ),
+                ]),
           ),
         ],
       ),
