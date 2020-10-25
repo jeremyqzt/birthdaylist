@@ -77,34 +77,34 @@ class _BottomCardForm extends State<BottomCardForm> {
                 padding: const EdgeInsets.only(right: 15),
                 child: GestureDetector(
                   onTap: () {
-                  _imgFromGallery();
-                },
-                child: CircleAvatar(
-                  radius: 35,
-                  backgroundColor: Colors.blue,
-                  child: _image != null
-                      ? ClipRRect(
-                    borderRadius: BorderRadius.circular(22),
-                          child: Image.file(
-                            _image,
+                    _imgFromGallery();
+                  },
+                  child: CircleAvatar(
+                    radius: 35,
+                    backgroundColor: Colors.blue,
+                    child: _image != null
+                        ? ClipRRect(
+                            borderRadius: BorderRadius.circular(22),
+                            child: Image.file(
+                              _image,
+                              width: 65,
+                              height: 65,
+                              fit: BoxFit.fitHeight,
+                            ),
+                          )
+                        : Container(
+                            decoration: BoxDecoration(
+                                color: Colors.grey[200],
+                                borderRadius: BorderRadius.circular(50)),
                             width: 65,
                             height: 65,
-                            fit: BoxFit.fitHeight,
+                            child: Icon(
+                              Icons.camera_alt,
+                              color: Colors.grey[800],
+                            ),
                           ),
-                        )
-                      : Container(
-                          decoration: BoxDecoration(
-                              color: Colors.grey[200],
-                              borderRadius: BorderRadius.circular(50)),
-                    width: 65,
-                    height: 65,
-                          child: Icon(
-                            Icons.camera_alt,
-                            color: Colors.grey[800],
-                          ),
-                        ),
+                  ),
                 ),
-              ),
               ),
               Expanded(
                 child: TextFormField(
@@ -246,22 +246,44 @@ class _BottomCardForm extends State<BottomCardForm> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30.0),
-            child: Row(children: [
-              RaisedButton(
+            padding: const EdgeInsets.all(30.0),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  MaterialButton(
+                    shape: new RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(30.0)),
+                    color: Colors.red,
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text('Cancel'),
-              ),
-              RaisedButton(
+                    child: Text(
+                      'Cancel',
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  MaterialButton(
+                    shape: new RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(30.0)),
+                    color: Colors.green,
                 onPressed: () {
-                if (_formKey.currentState.validate()) {
-                  // Process data.
-                }
-              },
-              child: Text('Save Contact'),
-            ),
+                  if (_formKey.currentState.validate()) {
+                    Navigator.pop(context);
+                  }
+                },
+                    child: Text(
+                      'Save Contact',
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ]),
           ),
         ],
