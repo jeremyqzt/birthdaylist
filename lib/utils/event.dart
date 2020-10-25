@@ -74,7 +74,7 @@ class Event {
         "reminderDay": true,
         "reminderprior": true,
         "automessage": true,
-        "messageContent": "Lorem Ipsum",
+        "messageContent": this.eventMessage,
         "title": "None"
       };
 }
