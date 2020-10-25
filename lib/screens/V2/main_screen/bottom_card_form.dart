@@ -250,37 +250,42 @@ class _BottomCardForm extends State<BottomCardForm> {
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  MaterialButton(
-                    shape: new RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(30.0)),
-                    color: Colors.red,
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                    child: Text(
-                      'Cancel',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                  Expanded(
+                    child: MaterialButton(
+                      shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(30.0)),
+                      color: Colors.red,
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text(
+                        'Cancel',
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
-                  MaterialButton(
-                    shape: new RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(30.0)),
-                    color: Colors.green,
-                onPressed: () {
-                  if (_formKey.currentState.validate()) {
-                    Navigator.pop(context);
-                  }
-                },
-                    child: Text(
-                      'Save Contact',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: MaterialButton(
+                      shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(30.0)),
+                      color: Colors.green,
+                      onPressed: () {
+                        if (_formKey.currentState.validate()) {
+                          Navigator.pop(context);
+                        }
+                      },
+                      child: Text(
+                        'Save Contact',
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
