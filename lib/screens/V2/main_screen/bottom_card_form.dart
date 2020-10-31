@@ -134,122 +134,148 @@ class _BottomCardForm extends State<BottomCardForm> {
               ),
             ]),
           ),
-          Padding(
-            padding: const EdgeInsets.only(
-                left: 30.0, right: 30.0, top: 5.0, bottom: 5.0),
-            child: AddedNewEventList(savedDates),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(
-                left: 30.0, right: 30.0, top: 10.0, bottom: 10.0),
-            child: new Row(children: [
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 10.0),
-                  child: new Theme(
-                    data: Theme.of(context).copyWith(
-                      canvasColor: Colors.white,
-                    ),
-                    child: DropdownButtonFormField<singleEvent>(
-                      value: dropdownValue,
-                      icon: Icon(Icons.arrow_downward),
-                      iconSize: 24,
-                      elevation: 16,
-                      style: TextStyle(color: Colors.black),
-                      onChanged: (singleEvent newValue) {
-                        setState(() {
-                          dropdownValue = newValue;
-                        });
-                      },
-                      items: constantSpecialDayStrings
-                          .map<DropdownMenuItem<singleEvent>>(
-                              (singleEvent entry) {
-                        return DropdownMenuItem<singleEvent>(
-                          value: entry,
-                          child: Text(entry.toString()),
-                        );
-                      }).toList(),
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                    hintText: 'Event Description',
-                  ),
-                  validator: (value) {
-                    return null;
-                  },
-                ),
-              ),
-            ]),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30.0),
-            child: new Row(
-              children: [
-                IconButton(
-                  color: iconColor,
-                  icon: Icon(pickedDateType.getIcon()),
-                  onPressed: () {
-                    dateType otherType = pickedDateType.getOtherType();
-                    setState(() {
-                      iconColor = otherType.getColor();
-                      pickedDateType = otherType;
-                    });
-                  },
-                ),
-                Expanded(
-                  child: new MaterialButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                        side: BorderSide(color: Colors.black)),
-                    onPressed: selectDate,
-                    child: new Text(
-                      dateVal,
-                      style: TextStyle(
-                        fontSize: 12.0,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: 10),
-                  child: MaterialButton(
-                    shape: new RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(30.0)),
-                    color: Colors.blue,
-                    onPressed: () {
-                      savedDates.add(new SingledAddedEvent(
-                          dateVal,
-                          dropdownValue.value,
-                          pickedDateType.type,
-                          dismissIdx,
-                          onDismiss));
-                      dismissIdx++;
+          Stack(children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 15.0, right: 15.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                      border: Border.all(
+                          width: 0.5,
+                          color: Colors.grey,
+                          style: BorderStyle.solid)),
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                        left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
+                    child: Column(children: [
+                      AddedNewEventList(savedDates),
+                      Row(children: [
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 15.0),
+                            child: new Theme(
+                              data: Theme.of(context).copyWith(
+                                canvasColor: Colors.white,
+                              ),
+                              child: DropdownButtonFormField<singleEvent>(
+                                value: dropdownValue,
+                                icon: Icon(Icons.arrow_downward),
+                                iconSize: 24,
+                                elevation: 16,
+                                style: TextStyle(color: Colors.black),
+                                onChanged: (singleEvent newValue) {
+                                  setState(() {
+                                    dropdownValue = newValue;
+                                  });
+                                },
+                                items: constantSpecialDayStrings
+                                    .map<DropdownMenuItem<singleEvent>>(
+                                        (singleEvent entry) {
+                                  return DropdownMenuItem<singleEvent>(
+                                    value: entry,
+                                    child: Text(entry.toString()),
+                                  );
+                                }).toList(),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: TextFormField(
+                            decoration: const InputDecoration(
+                              hintText: 'Event Description',
+                            ),
+                            validator: (value) {
+                              return null;
+                            },
+                          ),
+                        ),
+                      ]),
+                      SizedBox(height: 10.0),
+                      Row(
+                        children: [
+                          IconButton(
+                            color: iconColor,
+                            icon: Icon(pickedDateType.getIcon()),
+                            onPressed: () {
+                              dateType otherType =
+                                  pickedDateType.getOtherType();
+                              setState(() {
+                                iconColor = otherType.getColor();
+                                pickedDateType = otherType;
+                              });
+                            },
+                          ),
+                          Expanded(
+                            child: new MaterialButton(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18.0),
+                                  side: BorderSide(color: Colors.black)),
+                              onPressed: selectDate,
+                              child: new Text(
+                                dateVal,
+                                style: TextStyle(
+                                  fontSize: 12.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 10),
+                            child: MaterialButton(
+                              shape: new RoundedRectangleBorder(
+                                  borderRadius:
+                                      new BorderRadius.circular(30.0)),
+                              color: Colors.blue,
+                              onPressed: () {
+                                savedDates.add(new SingledAddedEvent(
+                                    dateVal,
+                                    dropdownValue.value,
+                                    pickedDateType.type,
+                                    dismissIdx,
+                                    onDismiss));
+                                dismissIdx++;
 
-                      setState(() {
-                        savedDates = savedDates;
-                      });
-                    },
-                    child: Text(
-                      'Add Event',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                                setState(() {
+                                  savedDates = savedDates;
+                                });
+                              },
+                              child: Text(
+                                'Add Event',
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
+                    ]),
                   ),
                 ),
-              ],
+              ),
             ),
-          ),
+            Positioned(
+                left: 40,
+                top: 0,
+                child: Container(
+                  padding: EdgeInsets.only(bottom: 5, left: 5, right: 5),
+                  color: Colors.white,
+                  child: Text(
+                    'Recorded Events',
+                    style: TextStyle(color: Colors.black, fontSize: 15),
+                  ),
+                )),
+          ]),
           Padding(
-            padding: const EdgeInsets.all(30.0),
+            padding: const EdgeInsets.only(
+                left: 15.0, right: 15.0, bottom: 5.0, top: 5.0),
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
