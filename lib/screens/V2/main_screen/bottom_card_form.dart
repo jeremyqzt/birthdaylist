@@ -71,7 +71,7 @@ class _BottomCardForm extends State<BottomCardForm> {
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.only(
-                left: 15.0, right: 30, top: 30, bottom: 10),
+                left: 15.0, right: 15.0, top: 15.0, bottom: 15.0),
             child: new Row(children: [
               Padding(
                 padding: const EdgeInsets.only(right: 15),
@@ -265,7 +265,7 @@ class _BottomCardForm extends State<BottomCardForm> {
                 left: 40,
                 top: 0,
                 child: Container(
-                  padding: EdgeInsets.only(bottom: 5, left: 5, right: 5),
+                  padding: EdgeInsets.only(bottom: 3, left: 5, right: 5),
                   color: Colors.white,
                   child: Text(
                     'Recorded Events',
